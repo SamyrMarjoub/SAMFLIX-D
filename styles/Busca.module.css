@@ -1,0 +1,34 @@
+.containerbusca{
+    width: 1000px;
+    margin: auto;
+    height: 400px;
+    background-color: rgb(100, 100, 100);
+    text-align: center;
+}
+.containerbusca input{
+    /* margin-left: 5%; */
+    width: 90%;
+    height: 60px;
+    font-size: 20px;
+}
+.butao{
+    margin-top: 50px;
+    /* background-color: black; */
+}
+.gridcontainer{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+   text-align: center;
+    row-gap: 20px;
+    margin-top: 50px;
+    width: 1200px;
+  }
+  .posterimg{
+    width: 80%;
+  }
+  .allcontainer{
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+  }

@@ -5,7 +5,10 @@ body {
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 }
-
+:root{
+  --blue: #007bfffd;
+  --gray: rgb(24, 27, 31);
+}
 a {
   color: inherit;
   text-decoration: none;
@@ -13,6 +16,20 @@ a {
 
 * {
   box-sizing: border-box;
+}
+.maincontainer{
+  width: 100%;
+  height: 100vh;
+  /* background-color: red; */
+  background-position: center center;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.testeimg{
+/* border: 1px solid white; */
 }
 
 @media (prefers-color-scheme: dark) {

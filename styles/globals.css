@@ -52,29 +52,46 @@ a {
 
 
 }
-.divsurlfilmesa:hover{
+
+.divsurlfilmesa:hover {
   transform: scale(0.95);
-  
 
 }
 
-/* .slick-prev::before {
-  color: red !important;
-  font-size: 50px;
-}
-.slick-prev{
-  left: -50px !important;
-  display: none !important;
-}
-.slick-next{
-  right: 10px !important;
-  top: 40% !important;
+.mainPost {
+  width: 100%;
+  height: 100vh;
+  background-position: center center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
 
 }
-.slick-next::before{
-  color: rgba(0, 0, 0, 0.47);
-  font-size: 100px;
-} */
+
+.blackmodal {
+  width: 100%;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.781), rgba(0, 0, 0, 0.495), rgb(0, 0, 0));
+}
+
+.blackmodala {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.781), rgba(0, 0, 0, 0.495), rgb(0, 0, 0));
+  z-index: 100;
+
+}
+.absolute{
+  position: absolute;
+}
 
 @media (prefers-color-scheme: dark) {
   html {

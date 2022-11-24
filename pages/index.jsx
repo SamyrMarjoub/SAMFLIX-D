@@ -1,7 +1,7 @@
 import Head from 'next/head'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
-import Header from '../components/header'
+import Headera from '../components/headerA'
 import Link from 'next/link'
 import axios from 'axios'
 import { useEffect, useState } from 'react'
@@ -91,8 +91,8 @@ export default function Home({ lista, series, popularFilm, nowFilm, filmTopRated
         <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css" />
       </Head>
 
-      <Header />
-      <div className={styles.blackmodal}></div>
+      <Headera  />
+      <div className={'blackmodal'}></div>
       <div className={'maincontainer'}>
         <div className={styles.containertitle}>
           {lista.filter((e, i) => i === 0).map((option, i) => {
@@ -128,26 +128,26 @@ export default function Home({ lista, series, popularFilm, nowFilm, filmTopRated
                 <Slider {...settings}>
                   {lista.map((e) => {
                     return (
+                      <Link href={`/movie/${e.id}`}>
+                        <div className='divsurlfilmesa'>
+                          <div style={{ backgroundImage: `url(https://image.tmdb.org/t/p/original${e.poster_path}` }} className='tocansado'>
+                            <div className={styles.gradientto}>
+                              <div className={styles.containerdsfa}>
+                                <div className={styles.filmslidedata}>
+                                  <h3 className={styles.titlename}>{e.title}</h3>
+                                  <div className={styles.releevote}>
+                                    <span>{e.release_date.slice(0, 4)}</span>
+                                    <span className={styles.voteStar}><FaRegStar /> {e.vote_average.toFixed(1)}</span>
+                                  </div>
 
-                      <div className='divsurlfilmesa'>
-                        <div style={{ backgroundImage: `url(https://image.tmdb.org/t/p/original${e.poster_path}` }} className='tocansado'>
-                          <div className={styles.gradientto}>
-                            <div className={styles.containerdsfa}>
-                              <div className={styles.filmslidedata}>
-                                <h3 className={styles.titlename}>{e.title}</h3>
-                                <div className={styles.releevote}>
-                                  <span>{e.release_date.slice(0, 4)}</span>
-                                  <span className={styles.voteStar}><FaRegStar /> {e.vote_average.toFixed(1)}</span>
                                 </div>
-
                               </div>
+
+
                             </div>
-
-
                           </div>
                         </div>
-                      </div>
-
+                      </Link>
                     )
                   })}
                 </Slider>

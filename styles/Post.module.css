@@ -1,0 +1,43 @@
+.mainPostContainer {
+    width: 90%;
+    /* background-color: red; */
+    min-height: 30%;
+    z-index: 150;
+    /* position: absolute; */
+    display: flex;
+    align-items: center;
+    margin-top: 3%;
+
+}
+
+.posterheadflex {
+    width: 100%;
+    display: flex;
+    height: 100%;
+
+}
+
+.posterheadflex1 {
+    width: 20%;
+    background-color: royalblue;
+    height: 100%;
+}
+.posterheadflex2{
+    width: 80%;
+    height: 100%;
+    /* background-color: gold; */
+}
+
+.imgposter {
+    width: 100%;
+    height: 100%;
+}
+.lose{
+    color: rgba(169, 169, 169, 0.689);
+}
+.filmdata{
+    margin-top: 20px;
+}
+.filmdata span{
+    margin-right: 20px;
+}

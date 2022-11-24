@@ -3,13 +3,22 @@
     background-color: transparent;
     height: 90px;
     color: black;
-    position: absolute;
-    top: 0;
-    left: 0;
-  z-index: 1;
+    z-index: 100;
     border-bottom: 1px solid rgba(128, 128, 128, 0.27);
-}
+    color: white;
 
+}
+.headerdiv2 {
+    width: 100%;
+    background-color: transparent;
+    height: 90px;
+    color: black;
+    z-index: 100;
+    color: white;
+    border-bottom: 1px solid rgba(128, 128, 128, 0.27);
+    position: absolute;
+
+}
 .headerdiv h1 {
     color: white;
 }
@@ -27,49 +36,58 @@
     align-items: center;
     display: flex;
 }
-.headercontainerf2{
+
+.headercontainerf2 {
     justify-content: flex-end;
 }
 
-.headerlogo{
+.headerlogo {
     margin-right: 40px;
 }
-.ul{
+
+.ul {
     /* background-color: red; */
     display: inline-block;
     height: 100%;
     display: flex;
     align-items: center;
 }
-.li{
+
+.li {
     display: inline;
     color: rgba(255, 255, 255, 0.668);
     margin-right: 30px;
     height: 100%;
     display: flex;
     align-items: center;
-   /* background-color: red; */
-   width: 80px;
-   justify-content: center;
+    /* background-color: red; */
+    width: 80px;
+    cursor: pointer;
+    justify-content: center;
 }
-.firstli{
+
+.firstli {
     color: white;
-border-bottom: 1px solid var(--blue);
+    border-bottom: 1px solid var(--blue);
 }
-.iconsearch{
-margin-right: 20px;
+
+.iconsearch {
+    margin-right: 20px;
 }
-.icon{
+
+.icon {
     width: 40px;
     color: rgba(255, 255, 255);
 }
-.minhaconta{
+
+.minhaconta {
     color: white;
     /* margin: auto; */
     font-size: 13px;
     font-weight: 800;
 }
-.butao{
+
+.butao {
     width: 150px;
     height: 50px;
     /* background-color: red; */
@@ -78,9 +96,10 @@ margin-right: 20px;
     justify-content: center;
     align-items: center;
 
- 
+
 }
-.usericon{
+
+.usericon {
     margin-left: 0px;
     width: auto;
     margin-right: 10px;

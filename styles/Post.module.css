@@ -1,43 +1,378 @@
 .mainPostContainer {
     width: 90%;
     /* background-color: red; */
-    min-height: 30%;
+    height: auto;
     z-index: 150;
     /* position: absolute; */
     display: flex;
     align-items: center;
-    margin-top: 3%;
+    /* margin-top: 3%; */
+    flex-direction: column;
 
 }
 
 .posterheadflex {
     width: 100%;
     display: flex;
-    height: 100%;
+    height: auto;
+    margin-top: 3%;
 
 }
 
 .posterheadflex1 {
-    width: 20%;
+    width: 19%;
     background-color: royalblue;
     height: 100%;
 }
-.posterheadflex2{
+
+.posterheadflex2 {
     width: 80%;
     height: 100%;
+    display: flex;
+    justify-content: flex-start;
     /* background-color: gold; */
 }
 
 .imgposter {
     width: 100%;
     height: 100%;
+
 }
-.lose{
+
+.lose {
     color: rgba(169, 169, 169, 0.689);
 }
-.filmdata{
+
+.filmdata {
+    margin-top: 20px;
+    height: 30px;
+    display: flex;
+    width: 100%;
+    align-items: center;
+}
+
+.filmdata span {
+    margin-right: 20px;
+}
+
+.description {
+    width: 100%;
     margin-top: 20px;
 }
-.filmdata span{
+
+.description p{
+ line-height: 25px;
+ letter-spacing: 1.5px;
+}
+
+.posterheadflexC {
+    margin-left: 3%;
+    width: 1000px; 
+}
+
+.buttonsPost {
+    width: 100%;
+    /* background-color: red; */
+    display: flex;
+    align-items: center;
+    height: 90px;
+}
+
+.btn1{
+    height: 50px;
+    width: 130px;
+}
+.btn2{
+    height: 50px;
+    width: 190px;
+}
+.buttonsPost button{
+    border-radius: 20px;
+    border: none;
+    margin-right: 15px;
+    background-color:rgba(24, 27, 31, 0.767);
+    letter-spacing: 2px;
+}
+.btn1{
+    font-size: 13px !important;
+}
+.btn3, .btn4{
+    width: 50px;
+    height: 50px;
+   
+}
+.movieTitle{
+    font-size: 55px;
+    margin-top: 10px;
+}
+.duration{
+   font-size: 20px;
+   float: left;
+   margin-top: -3px;
+   margin-right: 5px;
+}
+.starspan{
+    margin: 0 !important;
+}
+.starImg{
+    font-size: 20px;
+    float: left; 
+     margin-top: -3px;
+    margin-right: 5px;
+}
+.deiz{
+    font-size: 12px;
+}
+.generos{
+    margin-right: 10px !important;
+    padding: 0;
+}
+.buttonLarge{
+    width: 100%;
+    background-color: var(--blue);
+    height: 50px;
+    border-radius: 20px;
+    border: none;
+    font-size: 17px;
+}
+.divchooseDUB{
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.092);
+    /* margin-top: 50px; */
+    height: 430px;
+    display: flex;
+}
+.backdrop{
+    width: 50%;
+    height: 100%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+
+}
+.firstdv{
+background-color: transparent;
+width: 50%;
+height: 100%;
+display: flex;
+justify-content: center;
+/* align-items: center; */
+flex-direction: column;
+}
+.h1Idioma{
+    width:400px;
+    /* background-color: red; */
+    font-size: 60px;
+    margin-left: 5%;
+}
+.divbuttonidiom{
+    width: auto;
+    margin-left: 5%;
+    display: flex;
+    margin-top: 20px;
+}
+.divbuttonidiom button{
+    width: 180px;
+    height: 60px;
     margin-right: 20px;
+    border-radius: 30px;
+    border: none;
+    background-color: var(--gray);
+    letter-spacing: 3px;
+
+
+}
+.backdrop{
+    /* background-color: red; */
+}
+.backdrop button{
+    width: 100%;
+    height: 50px;
+    border: none;
+    background-color: var(--gray);
+    border-radius: 25px;
+    color: #00000008;
+}
+.specialsvgback{
+    width: 500px;
+    /* height: 100%; */
+   display: flex;
+   justify-content: flex-end;
+}
+.last{
+    width: 500px;
+    height: 100%;
+}
+.similardiv{
+    width: 100%;
+    /* background-color: red; */
+    margin-top: 30px;
+}
+.commentepublicrate{
+    width: 100%;
+    background-color: black;
+    min-height: 300px;
+    display: flex;
+    margin-top: 20px;
+}
+
+.flex1cp{
+    width: 40%;
+}
+.flex2cp{
+    /* background-color: antiquewhite; */
+    width: 60%;
+    /* height: 50px; */
+    display: flex;
+    justify-content: center;
+}
+.spancomentarios{
+    font-size: 35px;
+    padding-top: 20px;
+    display: inline-block;
+}
+.commentflex{
+    display: flex;
+}
+.commentflex1{
+    width: 75%;
+    /* margin-top: 20px; */
+}
+.commentflex2{
+    width: 25%;
+    display: flex;
+    flex-direction: column;
+    /* background-color: red; */
+    justify-content: center;
+  
+}
+.textarea{
+    width: 100%;
+    height: 85px;
+    border-radius: 20px;
+    border: none;
+    resize: none;
+    background-color: var(--gray);
+}
+.commentsvg{
+    left: 18px;
+    position: absolute;
+    color: gray;
+    margin-right: 20px;
+    font-size: 18px;
+}
+.buttontext{
+    margin-left: 25px;
+}
+
+.commentflex2 button{
+    /* margin: 5px; */
+    border-radius: 20px;
+    height: 50%;
+    background-color: var(--gray);
+    margin-left: 10px;
+    position: relative;
+    border: none;
+    margin-right: 10px;
+    letter-spacing: 1.5PX;
+    font-size: 12px;
+
+}
+.margincommentdv{
+    /* background-color: red; */
+    margin-top: 20px;
+}
+.commentsection{
+    width: 100%;
+    /* background-color: red; */
+    min-height: 300px;
+    margin-top: 20px;
+}
+.flexcommentsection{
+    width: 100%;
+    height: auto;
+    /* background-color: aliceblue; */
+    margin-bottom: 15px;
+    border-radius: 20px;
+    display: flex;
+}
+.vint{
+    width: 10%;
+    background-color: aqua;
+    background-image: url('https://vizer.tv/img/userPic.png');
+    background-position: center center;
+    background-size: cover;
+    border-radius: 20px;
+    background-repeat: no-repeat;
+    height: 60px;
+}
+.oitent{
+    background-color: black;
+      width: 90%;
+    display: flex;
+    flex-direction: column;
+}
+.oitent50{
+    height: auto;
+    display: flex;
+    align-items: flex-end;
+    
+}
+.oitents1{
+    margin-right: 10px;
+    font-size: 18px;
+    color: rgb(147, 147, 147);
+    justify-self: flex-end;
+    font-weight: 700;
+}
+.oitent502{
+  align-items: center;
+
+}
+.oitents2{
+    font-size: 10px;
+    margin-right: 10px;
+    background-color: var(--gray);
+    padding: 5px;
+    border-radius: 20px;
+}
+.oitents3{
+    font-size: 12px;
+    padding-bottom: 3px;
+}
+.commentparagraph{
+    font-size: 13px;
+    margin-top: 5px;
+    max-width: 95%;
+}
+.opniaopublica{
+    margin-top: 20px;
+    display: inline-block;
+    font-size: 35px;
+}
+.subh3{
+    margin-top: 20px;
+    color: rgba(169, 169, 169, 0.864);
+}
+.spanproduction{
+    margin-right: 10px;
+}
+.spanproductionM{
+ display: inline-block;
+    margin-top: 20px;
+}
+.h3sub2{
+    margin-top: 50px;
+}
+.h4sub{
+    margin-top: 5px;
+}
+.h6sub{
+    margin-top: 20px;
+    font-size: 15px;
+    margin-bottom: 5px;
+}
+.flex2cpContainer{
+    width: 95%;
+    height: 100%;
 }

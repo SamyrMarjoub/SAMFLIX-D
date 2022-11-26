@@ -1,0 +1,106 @@
+.footer {
+    margin-top: 30px;
+    width: 90%;
+    height: auto;
+    /* background-color: red; */
+    display: flex;
+    /* border-top: 1px solid #eaeaea; */
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding-bottom: 100px;
+  
+  }
+  
+  .footerh3 {
+    font-size: 20px;
+    margin-top: 50px;font-family: 'Mulish', sans-serif;
+  
+  }
+  .footerheaderdiv{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    align-items: flex-start;
+  
+    margin-top: 50px;
+  }
+  .footerheaderdiv li{
+    list-style: none;
+   margin-bottom: 10px;
+   margin-top: 5px;
+    /* text-align: center; */
+    font-size: 13px;
+  }
+  .footerheaderdiv ul{
+    margin-top: 10px;
+  }
+  .h4footer{
+    font-size: 20px;
+    color: rgba(255, 255, 255, 0.656);
+  }
+  .seguirtwitterb{
+    width: 150px;
+    background-color: #2aa9e0;
+    height: 45px;
+    border-radius: 20px;
+    border: none;
+    margin-top: 20px; font-size: 12px;
+    position: relative;
+  }
+  .apklater{
+    width: 200px;
+    background-color: rgb(24, 27, 31);
+    height: 45px;
+    border-radius: 20px;
+    border: none;
+    margin-top: 20px; font-size: 12px;
+    position: relative;
+  }
+  .spanbtnt{
+  line-height: 30px;
+  margin-left: 20px;
+  
+  }
+  .twittericon{
+    /* font-size: 20px; */
+   left: 15px;
+   margin-right: 10px;
+   /* display: inline-block; */
+  font-size: 16px;
+  position: absolute;
+  top: 14px;
+  }
+  .tmdbicon{
+    width: 150px;
+  }
+  .paragraphfooter{
+    width: 100%;
+    /* background-color: red; */
+    margin-top: 30px;
+  }
+  .spancopyright{
+    display: inline-block;
+    color: rgba(255, 255, 255, 0.666);
+    margin-top: 30px;
+    
+  }
+  .bigparagraphfooter{
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.666);
+  }
+  .ultimaLi{
+    color: rgba(255, 255, 255, 0.666);
+    width: 60%;
+  }
+  .spanfooterb{
+    color: rgba(255, 255, 255, 0.666);
+  
+  }
+  .divlists{
+    width: 25%;
+  }
+  .buttonfilter:hover{
+    background-color: rgb(47, 53, 61);
+   cursor: pointer;
+  }

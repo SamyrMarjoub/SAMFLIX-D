@@ -20,14 +20,13 @@
 }
 
 .posterheadflex1 {
-    width: 19%;
-    background-color: royalblue;
+    width: 15%;
+    /* background-color: royalblue; */
     height: 100%;
 }
 
 .posterheadflex2 {
-    width: 80%;
-    height: 100%;
+    width: 85%;
     display: flex;
     justify-content: flex-start;
     /* background-color: gold; */
@@ -35,7 +34,12 @@
 
 .imgposter {
     width: 100%;
-    height: 100%;
+    height: 350px;
+    border-radius: 20px;
+    /* height: 400px; */
+    /* background-size: cover; */
+    /* object-fit: cover; */
+
 
 }
 
@@ -60,14 +64,16 @@
     margin-top: 20px;
 }
 
-.description p{
- line-height: 25px;
- letter-spacing: 1.5px;
+.description p {
+    line-height: 25px;
+    /* letter-spacing: 1.5px; */
+    font-size: 14px;
+    max-width: 70%;
 }
 
 .posterheadflexC {
     margin-left: 3%;
-    width: 1000px; 
+    width: 1000px;
 }
 
 .buttonsPost {
@@ -78,71 +84,87 @@
     height: 90px;
 }
 
-.btn1{
+.btn1 {
     height: 50px;
     width: 130px;
 }
-.btn2{
+
+.btn2 {
     height: 50px;
     width: 190px;
 }
-.buttonsPost button{
+
+.buttonsPost button {
     border-radius: 20px;
     border: none;
     margin-right: 15px;
-    background-color:rgba(24, 27, 31, 0.767);
     letter-spacing: 2px;
 }
-.btn1{
+
+.btn1 {
     font-size: 13px !important;
 }
-.btn3, .btn4{
+
+.btn3,
+.btn4 {
     width: 50px;
     height: 50px;
-   
+
 }
-.movieTitle{
+
+.movieTitle {
     font-size: 55px;
     margin-top: 10px;
 }
-.duration{
-   font-size: 20px;
-   float: left;
-   margin-top: -3px;
-   margin-right: 5px;
-}
-.starspan{
-    margin: 0 !important;
-}
-.starImg{
+
+.duration {
     font-size: 20px;
-    float: left; 
-     margin-top: -3px;
+    float: left;
+    margin-top: -3px;
     margin-right: 5px;
 }
-.deiz{
+
+.starspan {
+    margin: 0 !important;
+}
+
+.starImg {
+    font-size: 20px;
+    float: left;
+    margin-top: -3px;
+    margin-right: 5px;
+}
+
+.deiz {
     font-size: 12px;
 }
-.generos{
+
+.generos {
     margin-right: 10px !important;
     padding: 0;
+font-size: 13px;
+font-weight: 300;
+    
 }
-.buttonLarge{
+
+.buttonLarge {
     width: 100%;
     background-color: var(--blue);
     height: 50px;
     border-radius: 20px;
     border: none;
+    text-transform: uppercase;
     font-size: 17px;
 }
-.divchooseDUB{
+
+.divchooseDUB {
     width: 100%;
-    background-color: rgba(0, 0, 0, 0.092);
-    /* margin-top: 50px; */
+    background-color: rgba(0, 0, 0, 0.013);
     height: 430px;
     display: flex;
 }
-.backdrop{
+
+.backdrop {
     width: 50%;
     height: 100%;
     display: flex;
@@ -150,42 +172,53 @@
     align-items: center;
 
 }
-.firstdv{
-background-color: transparent;
-width: 50%;
-height: 100%;
-display: flex;
-justify-content: center;
-/* align-items: center; */
-flex-direction: column;
+
+.firstdv {
+    background-color: transparent;
+    width: 50%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    /* align-items: center; */
+    flex-direction: column;
 }
-.h1Idioma{
-    width:400px;
-    /* background-color: red; */
+
+.h1Idioma {
+    width: 400px;
     font-size: 60px;
     margin-left: 5%;
+    background: -webkit-linear-gradient(#007bfffd, #00ff9dc7);
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
-.divbuttonidiom{
+
+.divbuttonidiom {
     width: auto;
     margin-left: 5%;
     display: flex;
     margin-top: 20px;
 }
-.divbuttonidiom button{
+
+.divbuttonidiom button {
     width: 180px;
     height: 60px;
     margin-right: 20px;
     border-radius: 30px;
     border: none;
-    background-color: var(--gray);
+    background-color: #303640;
     letter-spacing: 3px;
+  color: rgb(198, 197, 197);
+  font-weight: 700;
+    
 
 
 }
-.backdrop{
+
+.backdrop {
     /* background-color: red; */
 }
-.backdrop button{
+
+.backdrop button {
     width: 100%;
     height: 50px;
     border: none;
@@ -193,60 +226,70 @@ flex-direction: column;
     border-radius: 25px;
     color: #00000008;
 }
-.specialsvgback{
-    width: 500px;
+
+.specialsvgback {
+    width: 900px;
     /* height: 100%; */
-   display: flex;
-   justify-content: flex-end;
+    display: flex;
+    justify-content: flex-end;
 }
-.last{
-    width: 500px;
+
+.last {
+    width: auto;
     height: 100%;
 }
-.similardiv{
+
+.similardiv {
     width: 100%;
     /* background-color: red; */
-    margin-top: 30px;
+    margin-top: 40px;
 }
-.commentepublicrate{
+
+.commentepublicrate {
     width: 100%;
     background-color: black;
-    min-height: 300px;
+    min-height: 450px;
     display: flex;
     margin-top: 20px;
 }
 
-.flex1cp{
+.flex1cp {
     width: 40%;
 }
-.flex2cp{
+
+.flex2cp {
     /* background-color: antiquewhite; */
     width: 60%;
     /* height: 50px; */
     display: flex;
     justify-content: center;
 }
-.spancomentarios{
+
+.spancomentarios {
     font-size: 35px;
     padding-top: 20px;
     display: inline-block;
 }
-.commentflex{
+
+.commentflex {
     display: flex;
 }
-.commentflex1{
+
+.commentflex1 {
     width: 75%;
     /* margin-top: 20px; */
 }
-.commentflex2{
+
+.commentflex2 {
     width: 25%;
     display: flex;
     flex-direction: column;
     /* background-color: red; */
     justify-content: center;
-  
+
 }
-.textarea{
+
+.textarea {
     width: 100%;
     height: 85px;
     border-radius: 20px;
@@ -254,18 +297,20 @@ flex-direction: column;
     resize: none;
     background-color: var(--gray);
 }
-.commentsvg{
+
+.commentsvg {
     left: 18px;
     position: absolute;
     color: gray;
     margin-right: 20px;
     font-size: 18px;
 }
-.buttontext{
+
+.buttontext {
     margin-left: 25px;
 }
 
-.commentflex2 button{
+.commentflex2 button {
     /* margin: 5px; */
     border-radius: 20px;
     height: 50%;
@@ -278,17 +323,20 @@ flex-direction: column;
     font-size: 12px;
 
 }
-.margincommentdv{
+
+.margincommentdv {
     /* background-color: red; */
     margin-top: 20px;
 }
-.commentsection{
+
+.commentsection {
     width: 100%;
     /* background-color: red; */
     min-height: 300px;
     margin-top: 20px;
 }
-.flexcommentsection{
+
+.flexcommentsection {
     width: 100%;
     height: auto;
     /* background-color: aliceblue; */
@@ -296,7 +344,8 @@ flex-direction: column;
     border-radius: 20px;
     display: flex;
 }
-.vint{
+
+.vint {
     width: 10%;
     background-color: aqua;
     background-image: url('https://vizer.tv/img/userPic.png');
@@ -306,73 +355,201 @@ flex-direction: column;
     background-repeat: no-repeat;
     height: 60px;
 }
-.oitent{
+
+.oitent {
     background-color: black;
-      width: 90%;
+    width: 90%;
     display: flex;
     flex-direction: column;
 }
-.oitent50{
+
+.oitent50 {
     height: auto;
     display: flex;
     align-items: flex-end;
-    
+
 }
-.oitents1{
+
+.oitents1 {
     margin-right: 10px;
     font-size: 18px;
     color: rgb(147, 147, 147);
     justify-self: flex-end;
     font-weight: 700;
 }
-.oitent502{
-  align-items: center;
+
+.oitent502 {
+    align-items: center;
 
 }
-.oitents2{
+
+.oitents2 {
     font-size: 10px;
     margin-right: 10px;
     background-color: var(--gray);
     padding: 5px;
     border-radius: 20px;
 }
-.oitents3{
+
+.oitents3 {
     font-size: 12px;
     padding-bottom: 3px;
 }
-.commentparagraph{
+
+.commentparagraph {
     font-size: 13px;
     margin-top: 5px;
     max-width: 95%;
 }
-.opniaopublica{
+
+.opniaopublica {
     margin-top: 20px;
     display: inline-block;
     font-size: 35px;
 }
-.subh3{
+
+.subh3 {
     margin-top: 20px;
-    color: rgba(169, 169, 169, 0.864);
+    color: rgb(169, 169, 169);
+    font-weight: 300;
 }
-.spanproduction{
+
+.spanproduction {
     margin-right: 10px;
 }
-.spanproductionM{
- display: inline-block;
+
+.spanproductionM {
+    display: inline-block;
     margin-top: 20px;
+    color: rgba(169, 169, 169, 0.865);
+
 }
-.h3sub2{
+
+.h3sub2 {
     margin-top: 50px;
+    color: rgb(169, 169, 169);
 }
-.h4sub{
+
+.h4sub {
     margin-top: 5px;
+    color: rgb(169, 169, 169);
 }
-.h6sub{
+
+.h6sub {
     margin-top: 20px;
+    color: rgb(169, 169, 169);
     font-size: 15px;
     margin-bottom: 5px;
 }
-.flex2cpContainer{
+.subparagraph{
+    color: rgb(169, 169, 169);
+    font-weight: 300;
+    font-size: 14px;
+    letter-spacing: 1.5px;
+}
+
+.flex2cpContainer {
     width: 95%;
     height: 100%;
+}
+
+.containernocomment {
+    width: 100%;
+    /* background-color: red; */
+    height: 60%;
+    display: flex;
+    justify-content: center;
+}
+
+.nocommentspan {
+    margin-top: 5%;
+    color: rgba(255, 255, 255, 0.91);
+}
+
+.h3series {
+    letter-spacing: 3px;
+    font-weight: 300;
+    font-size: 13px;
+}
+
+.tempdivs {
+    width: 100%;
+    height: 50px;
+    /* background-color: red; */
+    margin-top: 50px;
+    margin-bottom: 50px;
+    display: flex;
+    align-items: center;
+}
+
+.tempdivsspan {
+    font-size: 20px;
+    font-weight: 800;
+    letter-spacing: 2px;
+}
+
+.divrecommendedseries {
+    width: 100%;
+    /* background-color: red; */
+    height: 50px;
+    align-items: center;
+    display: flex
+}
+
+.spanrecommendseries {
+    font-size: 30px;
+    font-weight: 500;
+    font-weight: 300;
+}
+
+.similardivseries {
+    margin-top: 10px;
+}
+
+.templength {
+    width: 35px;
+    height: 35px;
+    border-radius: 30px;
+    background-color: rgb(45, 50, 58);
+    display: inline-block;
+    text-align: center;
+    line-height: 35px;
+}
+
+.tempdivsflex {
+    display: flex;
+    justify-content: space-between;
+    width: 250px;
+}
+
+.buttonsPost button {
+    font-size: 12px !important;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    background-color: rgba(113, 125, 138, .2);
+
+}
+
+.svgimgbw {
+    font-size: 20px;
+}
+
+.seguirdiv {
+    background-color: #037cfe50 !important;
+}
+.spantrailer svg{
+position: absolute;
+right: -22px;
+top: -1px;
+font-size: 20px;
+}
+.spantrailer{
+    position: relative;
+}
+.btn1:hover, .btn2:hover, .btn3:hover, .btn4:hover{
+    background-color: rgba(113, 125, 138, 0.577);
+}
+.seguirdiv:hover{
+    background-color: #70b5ff50 !important;
 }

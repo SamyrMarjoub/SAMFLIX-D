@@ -79,7 +79,7 @@ export default function Home({ lista, series, popularFilm, nowFilm, filmTopRated
 
   useEffect(() => {
     ImageDinamica()
-    console.log(lista)
+    localStorage.setItem('pagina', 0)
 
   }, [])
   return (
@@ -102,7 +102,7 @@ export default function Home({ lista, series, popularFilm, nowFilm, filmTopRated
 
             )
           })}
-          <div>
+          <div className={styles.divmainsbuton}>
             <button className={styles.bassistirfilme}> <FaPlayCircle className={styles.imgplay} /> <span className={styles.spanasstir}>Assistir Filme</span> </button>
             <button className={styles.bmaistarde}> <FaClock className={styles.imgplay} /> <span className={styles.spanmaistarde}>Adicionar a ver depois</span></button>
           </div>
@@ -254,12 +254,13 @@ export default function Home({ lista, series, popularFilm, nowFilm, filmTopRated
               <Slider {...settings}>
                 {series.map((e) => {
                   return (
+                    <Link href={`/series/${e.id}`}>
                     <div className='divsurlfilmesa'>
                       <div style={{ backgroundImage: `url(https://image.tmdb.org/t/p/original${e.poster_path}` }} className='tocansado'>
                         <div className={styles.gradientto}>
                           <div className={styles.containerdsfa}>
                             <div className={styles.filmslidedata}>
-                              <h3 className={styles.titlename}>{e.title}</h3>
+                              <h3 className={styles.titlename}>{e.name}</h3>
                               <div className={styles.releevote}>
                                 <span>{e.first_air_date.slice(0, 4)}</span>
                                 <span className={styles.voteStar}><FaRegStar /> {e.vote_average.toFixed(1)}</span>
@@ -272,6 +273,8 @@ export default function Home({ lista, series, popularFilm, nowFilm, filmTopRated
                         </div>
                       </div>
                     </div>
+                    </Link>
+                  
                   )
                 })}
               </Slider>

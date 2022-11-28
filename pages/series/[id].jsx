@@ -1,25 +1,23 @@
-import Head from 'next/head'
-import Image from 'next/image'
-import styles from '../../styles/Post.module.css'
-import Header from '../../components/header'
-import Link from 'next/link'
-import { useEffect } from 'react'
-import { FaAngleRight, FaClock, FaFacebookF, FaRegClock, FaRegHandPeace, FaStar, FaTwitter, FaRegStar, FaCommentAlt, FaCircle } from 'react-icons/fa'
-
+import React from 'react'
 import axios from 'axios'
+import Header from '../../components/header'
+import { useEffect } from 'react'
 import { useState } from 'react'
 import Slider from "react-slick";
 import Footer from '../../components/footerPost'
+import Head from 'next/head'
+import styles from '../../styles/Post.module.css'
+import Link from 'next/link'
+import { FaAngleRight, FaClock, FaFacebookF, FaRegClock, FaRegHandPeace, FaStar, FaTwitter, FaRegStar, FaCommentAlt, FaCircle, FaBook } from 'react-icons/fa'
 
-export default function MovieItem({ info, RecommendMovie }) {
-
+export default function Series({ info, RecoSerie }) {
     const [settings, setTings] = useState(
         {
             dots: false,
             infinite: true,
             speed: 500,
             slidesToShow: 7,
-            slidesToScroll: 1,
+            slidesToScroll: 2,
             initialSlide: 0,
             responsive: [
                 {
@@ -62,8 +60,8 @@ export default function MovieItem({ info, RecommendMovie }) {
         paginacao()
     }, [])
     function paginacao(){
-       localStorage.setItem('pagina', 1)
-
+       localStorage.setItem('pagina', 2)
+     
     }
 
     return (
@@ -113,67 +111,60 @@ export default function MovieItem({ info, RecommendMovie }) {
                         </div>
                         <div className={styles.posterheadflex2}>
                             <div className={styles.posterheadflexC}>
-                                <h3 className={styles.h3series}>Assistir {info.title} Online
+                                <h3 className={styles.h3series}>Assistir {info.name} Online
                                 </h3>
                                 <h1 className={styles.movieTitle}>
-                                    {info.title}
+                                    {info.name}
 
                                 </h1>
                                 <div className={styles.filmdata}>
                                     <span>2022</span>
                                     <span ><FaRegClock className={styles.duration} />  2h, 5min</span>
                                     <span><span className={styles.starspan}> <FaStar className={styles.starImg} /> </span> 7.2/ <span className={styles.deiz}>10</span> </span>
-                                    <span>Genero: {info.genres.map((e) => { return (<span id={e.id} key={e.id} className={styles.generos}>{e.name}</span>) })}</span>
+                                    <span>Genero: {info.genres.map((e) => { return (<span className={styles.generos}>{e.name}</span>) })}</span>
                                     <span className={styles.spantrailer}>Trailer <FaAngleRight /> </span>
                                 </div>
                                 <div className={styles.description}>
                                     <p>{info.overview}</p>
                                 </div>
                                 <div className={styles.buttonsPost}>
-                                    <button className={styles.btn1}> <FaRegHandPeace className={styles.svgimgbw} /> CURTIR</button>
-                                    <button className={styles.btn2}> <FaClock className={styles.svgimgbw} /> VER DEPOIS</button>
-                                    <button className={styles.btn3}> <FaFacebookF className={styles.svgimgbw} /> </button>
-                                    <button className={styles.btn4}>  <FaTwitter className={styles.svgimgbw} /> </button>
+                                    <button className={`${styles.btn1} ${styles.seguirdiv}`}> <FaBook className={styles.svgimgbw} /> SEGUIR</button>
+                                    <button className={styles.btn1}> <FaRegHandPeace className={styles.svgimgbw}  /> CURTIR</button>
+                                    <button className={styles.btn2}> <FaClock className={styles.svgimgbw}  /> VER DEPOIS</button>
+                                    <button className={styles.btn3}> <FaFacebookF className={styles.svgimgbw}  /> </button>
+                                    <button className={styles.btn4}>  <FaTwitter className={styles.svgimgbw}  /> </button>
 
                                 </div>
-                                {/* <div className={styles.mainbutton}> <button className={styles.buttonLarge}>Ver página do filme!</button> </div> */}
+                                {/* <div className={styles.mainbutton}> <button className={styles.buttonLarge}>Ver página da série!</button> </div> */}
                             </div>
 
                         </div>
 
                     </div>
-                    <div className={styles.divchooseDUB}>
-                        <div className={styles.firstdv}>
-                            <h1 className={styles.h1Idioma}>ESCOLHA UM IDIOMA</h1>
-                            <div className={styles.divbuttonidiom}>
-                                <button>PORTUGUÊS</button>
-                                <button>INGLES</button>
-                            </div>
-
-                        </div>
-                        <div className={styles.backdrop}>
-                            {/* <button>Assistir Trailer</button> */}
-                            <div className={styles.last}>
-                              
-                                <svg className={styles.specialsvgback} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 600"><path d="M900 324.5c-32.2-29.1-64.3-58.1-105.6-69.5-41.3-11.4-91.7-5.2-123.9-25.5-32.1-20.4-46-67.4-58.8-110.1C599 76.7 587.2 38.4 575.5 0H900Z" fill="#001833"></path><path d="M900 216.3c-21.4-19.3-42.9-38.7-70.4-46.3-27.5-7.6-61.1-3.4-82.6-17-21.4-13.6-30.6-44.9-39.2-73.4-8.5-28.5-16.3-54-24.1-79.6H900Z" fill="#003e80"></path><path d="M900 108.2c-10.7-9.7-21.4-19.4-35.2-23.2-13.8-3.8-30.6-1.7-41.3-8.5-10.7-6.8-15.3-22.5-19.6-36.7-4.2-14.2-8.2-27-12.1-39.8H900Z" fill="#007bfffd"></path></svg>
-
-                            </div>
+                    <div className={styles.tempdivs}>
+                        <div className={styles.tempdivsflex}>
+                            <span className={styles.tempdivsspan}>Temporadas</span>
+                            <div className={styles.templength}>{info.seasons.length}</div>
                         </div>
 
                     </div>
-                    <div className={styles.similardiv}>
+
+                    <div className={styles.divrecommendedseries}>
+                        <span className={styles.spanrecommendseries}>Séries Recomendadas</span>
+                    </div>
+                    <div className={`${styles.similardiv} ${styles.similardivseries}`}>
                         <Slider {...settings}>
-                            {RecommendMovie.map((e) => {
+                            {RecoSerie.map((e) => {
                                 return (
-                                    <Link href={`/movie/${e.id}`} onClick={BackgroundImg}>
+                                    <Link href={`/series/${e.id}`} onClick={BackgroundImg}>
                                         <div className='divsurlfilmesa'>
                                             <div style={{ backgroundImage: `url(https://image.tmdb.org/t/p/original${e.poster_path}` }} className='tocansado'>
                                                 <div className='gradientto'>
                                                     <div className='containerdsfa'>
                                                         <div className='filmslidedata'>
-                                                            <h3 className='titlename'>{e.title}</h3>
+                                                            <h3 className='titlename'>{e.name}</h3>
                                                             <div className='releevote'>
-                                                                <span>{e.release_date.slice(0, 4)}</span>
+                                                                <span>{e.first_air_date.slice(0, 4)}</span>
                                                                 <span className='voteStar'> <FaRegStar /> {e.vote_average.toFixed(1)}</span>
                                                             </div>
 
@@ -188,16 +179,7 @@ export default function MovieItem({ info, RecommendMovie }) {
 
                                 )
                             })}
-                            {/* <div className='teste'>a</div>
-                            <div className='teste'>a</div>
-                            <div className='teste'>a</div>
-                            <div className='teste'>a</div>
-                            <div className='teste'>a</div>
-                            <div className='teste'>a</div>
-                            <div className='teste'>a</div>
-                            <div className='teste'>a</div>
-                            <div className='teste'>a</div>
-                            <div className='teste'>a</div> */}
+
 
                         </Slider>
                     </div>
@@ -284,11 +266,11 @@ export default function MovieItem({ info, RecommendMovie }) {
                         <div className={`${styles.flex2cp} ${styles.flexT}`}>
                             <div className={styles.flex2cpContainer}>
                                 <span className={styles.opniaopublica}>Opnião Pública</span>
-                                <h3 className={styles.subh3}>{info.title} Dublado e Legendado</h3>
+                                <h3 className={styles.subh3}>{info.name} Dublado e Legendado</h3>
                                 <span className={styles.spanproductionM}>Produção: {info.production_companies.map((e) => { return (<><span className={styles.spanproduction}>{e.name}.</span></>) })}</span>
-                                <h3 className={styles.h3sub2}>Assistir {info.title} Online</h3>
-                                <h4 className={styles.h4sub}>{info.original_title} Legendado || {info.title} Dublado</h4>
-                                <h6 className={styles.h6sub}>{info.original_title} Online - Assistir {info.title} Online grátis Dublado Legendado</h6>
+                                <h3 className={styles.h3sub2}>Assistir {info.name} Online</h3>
+                                <h4 className={styles.h4sub}>{info.original_name} Legendado || {info.title} Dublado</h4>
+                                <h6 className={styles.h6sub}>{info.original_name} Online - Assistir {info.name} Online grátis Dublado Legendado</h6>
                                 <p className={styles.subparagraph}>
                                     Filmes Online - Assistir Filmes Online - Filmes Online Grátis - Filmes Completos Dublados - Ligação Explosiva Online
                                     Quer assistir filmes online em alta qualidade no vizer? É muito simples! Clique no botão de play, escolha um player de filme, e assista online gratuitamente! Pode também baixar todos os episódios por mystream, fembed e torrent! Tem melhor que isso? Acho que não! No Vizer você encontra mm filmes gratis em alta qualidade, sempre com lançamento novo! Não é necessário cadastro para assistir, mas se você é um fanatico por filmes, o vizer tem o melhor painel de usuário de sempre! Crie listas de filmes e séries, receba notificações, conheça a comunidade e muito mais!
@@ -302,7 +284,7 @@ export default function MovieItem({ info, RecommendMovie }) {
                     </div>
 
                 </div>
-                <Footer title={info.title} />
+                <Footer title={info.name} />
 
             </main>
 
@@ -313,18 +295,21 @@ export default function MovieItem({ info, RecommendMovie }) {
     )
 }
 
+
 export async function getServerSideProps(context) {
     const id = context.params.id
-    const resposta = await axios.get(`https://api.themoviedb.org/3/movie/${id}?api_key=86ff22163d48cfd8567997262922738a&language=pt-BR`)
-    const idFilm = resposta.data
-    const RecoMovie = await axios.get(`https://api.themoviedb.org/3/movie/${idFilm.id}/similar?api_key=86ff22163d48cfd8567997262922738a&language=pt-br&page=1`)
-
+    const resposta = await axios.get(`https://api.themoviedb.org/3/tv/${id}?api_key=86ff22163d48cfd8567997262922738a&language=pt-br`)
+    const RecoSerie = await axios.get(`https://api.themoviedb.org/3/tv/${id}/similar?api_key=86ff22163d48cfd8567997262922738a&language=en-US&page=1`)
+    // console.log(resposta.data)
     return {
         props: {
             info: resposta.data,
-            RecommendMovie: RecoMovie.data.results
+            RecoSerie: RecoSerie.data.results
         }
 
     }
+
+
+
 
 }

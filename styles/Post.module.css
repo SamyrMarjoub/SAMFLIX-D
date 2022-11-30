@@ -142,9 +142,9 @@
 .generos {
     margin-right: 10px !important;
     padding: 0;
-font-size: 13px;
-font-weight: 300;
-    
+    font-size: 13px;
+    font-weight: 300;
+
 }
 
 .buttonLarge {
@@ -188,8 +188,8 @@ font-weight: 300;
     font-size: 60px;
     margin-left: 5%;
     background: -webkit-linear-gradient(#007bfffd, #00ff9dc7);
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
 .divbuttonidiom {
@@ -207,9 +207,9 @@ font-weight: 300;
     border: none;
     background-color: #303640;
     letter-spacing: 3px;
-  color: rgb(198, 197, 197);
-  font-weight: 700;
-    
+    color: rgb(198, 197, 197);
+    font-weight: 700;
+
 
 
 }
@@ -441,7 +441,8 @@ font-weight: 300;
     font-size: 15px;
     margin-bottom: 5px;
 }
-.subparagraph{
+
+.subparagraph {
     color: rgb(169, 169, 169);
     font-weight: 300;
     font-size: 14px;
@@ -538,18 +539,283 @@ font-weight: 300;
 .seguirdiv {
     background-color: #037cfe50 !important;
 }
-.spantrailer svg{
-position: absolute;
-right: -22px;
-top: -1px;
-font-size: 20px;
+
+.spantrailer svg {
+    position: absolute;
+    right: -22px;
+    top: -1px;
+    font-size: 20px;
 }
-.spantrailer{
+
+.spantrailer {
     position: relative;
 }
-.btn1:hover, .btn2:hover, .btn3:hover, .btn4:hover{
+
+.btn1:hover,
+.btn2:hover,
+.btn3:hover,
+.btn4:hover {
     background-color: rgba(113, 125, 138, 0.577);
 }
-.seguirdiv:hover{
+
+.seguirdiv:hover {
     background-color: #70b5ff50 !important;
+}
+
+.headercontainerf {
+    width: 90%;
+
+}
+
+.morehc {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.filmseriebody {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.filmseriecontainer {
+    width: 90%;
+    /* background-color: red; */
+    height: 300px;
+}
+
+.h3filmserie {
+    font-size: 28px;
+    font-weight: 300;
+    color: white;
+    margin-top: 20px;
+}
+
+.containerdsfa {
+    width: 90%;
+    background-color: transparent;
+    height: auto;
+    display: flex;
+}
+
+.titlename {
+    width: 100%;
+    font-size: 14px;
+}
+
+.gradientto {
+    width: 100%;
+    height: 100%;
+    background-image: linear-gradient(transparent, black);
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+}
+
+.filmslidedata {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.releevote {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    color: rgba(250, 246, 246, 0.438);
+}
+
+.start {
+    font-size: 30px;
+}
+
+.divsurlfilmesa2 {
+    width: 100%;
+    height: 300px;
+    /* background-color: red; */
+}
+
+.bodydiviflmes2 {
+    margin-top: 100px;
+}
+
+.filmandseriedivfiltersearch {
+    width: 100%;
+    height: 60px;
+    /* background-color: red; */
+    display: flex;
+    margin-top: 60px;
+    margin-bottom: 30px;
+
+}
+
+.searchdivsf {
+    width: 50%;
+    /* background-color: blue; */
+    height: 100%;
+    position: relative;
+}
+
+.defaultfs {
+    height: 30px;
+    height: 100%;
+    display: flex;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    width: 16.6%;
+    border: 1px solid black;
+    /* background-color: red; */
+    flex-direction: column;
+
+}
+
+.fs1 {
+    width: 12%;
+    /* background-color: red; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.searchinput {
+    width: 100%;
+    height: 100%;
+    border: none;
+    background-color: transparent;
+    outline: none;
+}
+
+.searchinput::placeholder {
+    color: rgba(250, 246, 246, 0.438);
+    text-align: start;
+    /* margin: auto; */
+}
+
+.containerseatchdiv {
+    width: 100%;
+    display: flex;
+}
+
+.spanpesquisesearch {
+    position: absolute;
+    font-weight: 900;
+    color: rgb(147, 147, 147);
+    font-size: 13px;
+    top: -10px;
+    text-transform: uppercase;
+    letter-spacing: 1.3px;
+
+}
+
+.svgiconsearch {
+    position: absolute;
+    right: 0;
+    top: 40%;
+    font-size: 20px;
+    color: rgba(250, 246, 246, 0.438);
+}
+
+.sliderRange {
+    -webkit-appearance: none;
+    width: 100%;
+    height: 5px;
+    background: rgb(80, 80, 80);
+    outline: none;
+    opacity: 0.7;
+    -webkit-transition: .2s;
+    transition: opacity .2s;
+}
+
+.containerdfts {
+    width: 70%;
+    display: flex;
+}
+.header50top{
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+.containerfilmargin{
+    width: 80%;
+/* background-color: blue; */
+height: 100%;
+display: flex;
+flex-direction: column;
+justify-content: space-between;
+
+}
+.containerfilmargin2{
+    align-items: center;
+    justify-content: center;
+}
+.filtersvg{
+    font-size: 25px;
+}
+.filterdivflexsvg{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.gridfilmserie{
+    grid-template-columns: repeat(7,1fr);
+    width: 100%;
+    height: auto;
+    /* row-gap: 20px; */
+    display: grid;
+    /* grid-template-rows: 150px; */
+    gap: 15px;
+}
+.griddiv{
+    background-color: red;
+    height: 350px;
+    background-size: cover;
+    background-position: center center;
+border-radius: 20px;
+transition: 0.2s;
+}
+.griddiv:hover{
+transform: scale(1.05);
+}
+.paginationdiv{
+    width: 100%;
+    height:150px;
+    background-color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 30px;
+}
+.paginationcontentdiv{
+    min-width: 60px;
+    height: 60px;
+    border-radius: 20px;
+    background-color: #0d0e11;
+    margin-right: 20px;
+    font-size: 18px;
+    color: white;
+    display: flex;
+    justify-content: center;
+    color: rgb(198, 197, 197);
+    align-items: center;
+    transition: 0.2s all;
+    cursor: pointer;
+}
+.paginationcontentdiv:hover{
+    background-color: #383c47;
+}
+.paginationselected{
+    background: linear-gradient(rgb(24, 27, 31), rgb(24, 27, 31)) padding-box, linear-gradient(to right, var(--blue), #a6cefd) border-box;
+    border-radius: 20px;
+    border: 2px solid transparent;
+}
+.footerfs{
+    width: 100% !important;
+}
+.cntn{
+    margin-top: 30px;
 }

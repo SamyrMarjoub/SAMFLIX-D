@@ -60,6 +60,7 @@ export default function MovieItem({ info, RecommendMovie }) {
     useEffect(() => {
         BackgroundImg()
         paginacao()
+        console.log(info.id)
     }, [])
     function paginacao(){
        localStorage.setItem('pagina', 1)

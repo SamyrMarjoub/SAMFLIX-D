@@ -39,8 +39,8 @@ export default function header() {
                     <h1 className={styles.headerlogo}><Link href='/'>SAMFLIX</Link></h1>
                     <ul className={styles.ul}>
                         <li className={`${styles.li} inicio`}>Inicio</li>
-                        <li className={`${styles.li} filme`} >Filmes</li>
-                        <li className={`${styles.li} series`}>Series</li>
+                        <li className={`${styles.li} filme`}><Link href='/filmes'>Filmes</Link> </li>
+                        <li className={`${styles.li} series`}><Link href={'/series'}>Series</Link> </li>
                         <li className={`${styles.li} anime`}>Animes</li>
 
                     </ul>

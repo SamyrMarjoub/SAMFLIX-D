@@ -50,7 +50,7 @@ export default function filmes({ SeriesNow, topRated }) {
         paginacao()
     }, [])
     function paginacao() {
-        localStorage.setItem('pagina', 1)
+        localStorage.setItem('pagina', 2)
 
     }
     return (
@@ -76,7 +76,7 @@ export default function filmes({ SeriesNow, topRated }) {
                         <Slider {...settings}>
                             {SeriesNow.map((e) => {
                                 return (
-                                    <Link href={`/series/${e.id}`}>
+                                    <Link href={`/series/${e.id}`} key={e.id}>
                                         <div className='divsurlfilmesa'>
                                             <div style={{ backgroundImage: `url(https://image.tmdb.org/t/p/original${e.poster_path}` }} className='tocansado'>
                                                 <div className='gradientto'>
@@ -164,7 +164,7 @@ export default function filmes({ SeriesNow, topRated }) {
                     <div className={styles.gridfilmserie}>
                         {topRated.map((e) => {
                             return (
-                                <Link href={`/series/${e.id}`}>
+                                <Link href={`/series/${e.id}`} key={e.id}>
                                     <div style={{ backgroundImage: `url(https://image.tmdb.org/t/p/original${e.poster_path}` }} className={`${'tocansado'} ${styles.griddiv}`} >
                                         <div className={styles.gradientto}>
                                             <div className={styles.containerdsfa}>

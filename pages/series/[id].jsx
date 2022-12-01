@@ -156,7 +156,7 @@ export default function Series({ info, RecoSerie }) {
                         <Slider {...settings}>
                             {RecoSerie.map((e) => {
                                 return (
-                                    <Link href={`/series/${e.id}`} onClick={BackgroundImg}>
+                                    <Link href={`/series/${e.id}`} key={e.id} onClick={BackgroundImg}>
                                         <div className='divsurlfilmesa'>
                                             <div style={{ backgroundImage: `url(https://image.tmdb.org/t/p/original${e.poster_path}` }} className='tocansado'>
                                                 <div className='gradientto'>
@@ -300,7 +300,8 @@ export async function getServerSideProps(context) {
     const id = context.params.id
     const resposta = await axios.get(`https://api.themoviedb.org/3/tv/${id}?api_key=86ff22163d48cfd8567997262922738a&language=pt-br`)
     const RecoSerie = await axios.get(`https://api.themoviedb.org/3/tv/${id}/similar?api_key=86ff22163d48cfd8567997262922738a&language=en-US&page=1`)
-    // console.log(resposta.data)
+    // const video = await axios.get(`https://api.themoviedb.org/3/movie/${id}/videos?api_key=86ff22163d48cfd8567997262922738a&language=en-US`)
+    console.log(id)
     return {
         props: {
             info: resposta.data,

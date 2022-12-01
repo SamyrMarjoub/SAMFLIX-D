@@ -11,7 +11,7 @@ import { useState } from 'react'
 import Slider from "react-slick";
 import Footer from '../../components/footerPost'
 
-export default function MovieItem({ info, RecommendMovie }) {
+export default function MovieItem({ info, RecommendMovie, videoFilm }) {
 
     const [settings, setTings] = useState(
         {
@@ -166,7 +166,7 @@ export default function MovieItem({ info, RecommendMovie }) {
                         <Slider {...settings}>
                             {RecommendMovie.map((e) => {
                                 return (
-                                    <Link href={`/movie/${e.id}`} onClick={BackgroundImg}>
+                                    <Link href={`/movie/${e.id}`} key={e.id} onClick={BackgroundImg}>
                                         <div className='divsurlfilmesa'>
                                             <div style={{ backgroundImage: `url(https://image.tmdb.org/t/p/original${e.poster_path}` }} className='tocansado'>
                                                 <div className='gradientto'>
@@ -319,11 +319,13 @@ export async function getServerSideProps(context) {
     const resposta = await axios.get(`https://api.themoviedb.org/3/movie/${id}?api_key=86ff22163d48cfd8567997262922738a&language=pt-BR`)
     const idFilm = resposta.data
     const RecoMovie = await axios.get(`https://api.themoviedb.org/3/movie/${idFilm.id}/similar?api_key=86ff22163d48cfd8567997262922738a&language=pt-br&page=1`)
-
+    const video = await axios.get(`https://api.themoviedb.org/3/movie/${id}/videos?api_key=86ff22163d48cfd8567997262922738a&language=en-US`)
+ 
     return {
         props: {
             info: resposta.data,
-            RecommendMovie: RecoMovie.data.results
+            RecommendMovie: RecoMovie.data.results,
+            videoFilm: video.data.results
         }
 
     }

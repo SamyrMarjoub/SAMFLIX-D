@@ -54,11 +54,13 @@ export default function Home({ lista, series, popularFilm, nowFilm, filmTopRated
       ]
     }
   )
+  const [idFilm, setIdFilm] = useState(0)
   const [FilmEscolhido, setFilmEscolhido] = useState(0)
 
   function ImageDinamica() {
     const div = document.querySelector('.maincontainer')
     const url = lista.filter((e, i) => i === 0).map((option, i) => {
+      setIdFilm(option.id)
       return `https://image.tmdb.org/t/p/original${option.backdrop_path}`
     })
     div.style.backgroundImage = `url(${url})`
@@ -98,12 +100,11 @@ export default function Home({ lista, series, popularFilm, nowFilm, filmTopRated
         <div className={styles.containertitle}>
           {lista.filter((e, i) => i === 0).map((option, i) => {
             return (
-              <h1 className={styles.MainTitle}>{option.title}</h1>
-
+              <h1 key={option.id} className={styles.MainTitle}>{option.title}</h1>
             )
           })}
           <div className={styles.divmainsbuton}>
-            <button className={styles.bassistirfilme}> <FaPlayCircle className={styles.imgplay} /> <span className={styles.spanasstir}>Assistir Filme</span> </button>
+          <Link href={`/movie/${idFilm}`}>  <button className={styles.bassistirfilme}> <FaPlayCircle className={styles.imgplay} /> <span className={styles.spanasstir}> Assistir Filme</span> </button></Link>
             <button className={styles.bmaistarde}> <FaClock className={styles.imgplay} /> <span className={styles.spanmaistarde}>Adicionar a ver depois</span></button>
           </div>
 
@@ -129,8 +130,8 @@ export default function Home({ lista, series, popularFilm, nowFilm, filmTopRated
                 <Slider {...settings}>
                   {lista.map((e) => {
                     return (
-                      <Link href={`/movie/${e.id}`}>
-                        <div className='divsurlfilmesa'>
+                      <Link href={`/movie/${e.id}`} key={e.id}>
+                        <div className='divsurlfilmesa' >
                           <div style={{ backgroundImage: `url(https://image.tmdb.org/t/p/original${e.poster_path}` }} className='tocansado'>
                             <div className={styles.gradientto}>
                               <div className={styles.containerdsfa}>
@@ -159,7 +160,7 @@ export default function Home({ lista, series, popularFilm, nowFilm, filmTopRated
                   <Slider {...settings}>
                     {nowFilm.map((e) => {
                       return (
-                        <div className='divsurlfilmesa'>
+                        <div className='divsurlfilmesa' key={e.id}>
                           <div style={{ backgroundImage: `url(https://image.tmdb.org/t/p/original${e.poster_path}` }} className='tocansado'>
                             <div className={styles.gradientto}>
                               <div className={styles.containerdsfa}>
@@ -185,7 +186,7 @@ export default function Home({ lista, series, popularFilm, nowFilm, filmTopRated
                   <Slider {...settings}>
                     {popularFilm.map((e) => {
                       return (
-                        <div className='divsurlfilmesa'>
+                        <div className='divsurlfilmesa' key={e.id}>
                           <div style={{ backgroundImage: `url(https://image.tmdb.org/t/p/original${e.poster_path}` }} className='tocansado'>
                             <div className={styles.gradientto}>
                               <div className={styles.containerdsfa}>
@@ -211,7 +212,7 @@ export default function Home({ lista, series, popularFilm, nowFilm, filmTopRated
                   <Slider {...settings}>
                     {filmTopRated.map((e) => {
                       return (
-                        <div className='divsurlfilmesa'>
+                        <div className='divsurlfilmesa' key={e.id}>
                           <div style={{ backgroundImage: `url(https://image.tmdb.org/t/p/original${e.poster_path}` }} className='tocansado'>
                             <div className={styles.gradientto}>
                               <div className={styles.containerdsfa}>
@@ -254,7 +255,7 @@ export default function Home({ lista, series, popularFilm, nowFilm, filmTopRated
               <Slider {...settings}>
                 {series.map((e) => {
                   return (
-                    <Link href={`/series/${e.id}`}>
+                    <Link href={`/series/${e.id}`} key={e.id}>
                     <div className='divsurlfilmesa'>
                       <div style={{ backgroundImage: `url(https://image.tmdb.org/t/p/original${e.poster_path}` }} className='tocansado'>
                         <div className={styles.gradientto}>
@@ -287,46 +288,16 @@ export default function Home({ lista, series, popularFilm, nowFilm, filmTopRated
 
       </div>
 
-      {/* <main className={styles.main}>
-        <h1 className={styles.title}>
-          Filmes em destaque
-        </h1>
-        <Link href={'/busca'}>Ir para busca</Link>
-
-        <div className={styles.gridcontainer}>
-          {lista.map((e) => {
-            return (
-              <Link href={`/movie/${e.id}`}>
-                <div key={e.id}>
-                  <h3>{e.original_title}</h3> <br />
-                  <img src={`https://image.tmdb.org/t/p/original${e.poster_path}`} className={styles.posterimg} />
-                </div>
-              </Link>
-            )
-          })}
-        </div>
-      </main>
-
-      <footer className={styles.footer}>
-        {5 < 3 ?
-          <Link href={'/sobre'}><h3 className={styles.h3}>Sobre SamFlix</h3></Link>
-          : <>
-            <Link href={'/no'}><h3 className={styles.h3}>Sobre SamFlix</h3></Link>
-          </>
-        }
-      </footer> */}
     </div>
   )
 }
 
 export async function getServerSideProps() {
   const filmes = await fetch('http://localhost:3000/api/trending')
-  const response2 = await axios.get('https://api.themoviedb.org/3/movie/436270images?api_key=86ff22163d48cfd8567997262922738a&language=en-US')
   const series2 = await axios.get('https://api.themoviedb.org/3/tv/popular?api_key=86ff22163d48cfd8567997262922738a&language=pt-br&')
   const filmesNow = await axios.get('https://api.themoviedb.org/3/movie/now_playing?api_key=86ff22163d48cfd8567997262922738a&language=pt-br&page=1')
   const filmesPopular = await axios.get('https://api.themoviedb.org/3/movie/popular?api_key=86ff22163d48cfd8567997262922738a&language=pt-br&page=1')
   const filmTopRated = await axios.get('https://api.themoviedb.org/3/movie/top_rated?api_key=86ff22163d48cfd8567997262922738a&language=pt-br&page=1')
-  const series = await fetch('http://localhost:3000/api/series')
   const json = await filmes.json()
 
 

@@ -46,12 +46,25 @@ export default function filmes({ listaFilms, topRated }) {
             ]
         }
     )
+    const [query, setQuery] = useState('')
+    const [moviesSearched, setMoviesSearched] = useState([])
+
     useEffect(() => {
         paginacao()
     }, [])
     function paginacao() {
         localStorage.setItem('pagina', 1)
 
+    }
+    useEffect(()=>{
+console.log(moviesSearched)
+    }, [moviesSearched])
+    async function searchedmovie(e) {
+        e.preventDefault()
+        const queryI = await axios.get(`https://api.themoviedb.org/3/search/movie?api_key=86ff22163d48cfd8567997262922738a&language=en-US&query=${query}&page=1&include_adult=false`)
+        setQuery('')
+        setMoviesSearched(queryI.data.results)
+        console.log(moviesSearched)
     }
     return (
         <>
@@ -76,7 +89,7 @@ export default function filmes({ listaFilms, topRated }) {
                     <Slider {...settings}>
                         {listaFilms.map((e) => {
                             return (
-                                <Link href={`/movie/${e.id}`}>
+                                <Link href={`/movie/${e.id}`} key={e.id}>
                                     <div className='divsurlfilmesa divsurlfilmessf'>
                                         <div style={{ backgroundImage: `url(https://image.tmdb.org/t/p/original${e.poster_path}` }} className='tocansado'>
                                             <div className={styles.gradientto}>
@@ -103,7 +116,10 @@ export default function filmes({ listaFilms, topRated }) {
                         <div className={styles.containerseatchdiv}>
                             <div className={styles.searchdivsf}>
                                 <span className={styles.spanpesquisesearch}>PESQUISE</span>
-                                <input placeholder='Pesquise por titulo' className={styles.searchinput} type={'search'} />
+                                <form onSubmit={searchedmovie}>
+                                    <input value={query} onChange={(e) => { setQuery(e.target.value) }} placeholder='Pesquise por titulo' className={styles.searchinput} type={'search'} />
+
+                                </form>
                                 <FaSearch className={styles.svgiconsearch} />
                             </div>
 
@@ -159,7 +175,7 @@ export default function filmes({ listaFilms, topRated }) {
                     <div className={styles.gridfilmserie}>
                         {topRated.map((e) => {
                             return (
-                                <Link href={`/movie/${e.id}`}>
+                                <Link href={`/movie/${e.id}`} key={e.id}>
                                     <div style={{ backgroundImage: `url(https://image.tmdb.org/t/p/original${e.poster_path}` }} className={`${'tocansado'} ${styles.griddiv}`} >
                                         <div className={styles.gradientto}>
                                             <div className={styles.containerdsfa}>
@@ -202,7 +218,6 @@ export default function filmes({ listaFilms, topRated }) {
 export async function getServerSideProps() {
     const filmesNow = await axios.get(`https://api.themoviedb.org/3/movie/now_playing?api_key=86ff22163d48cfd8567997262922738a&language=pt-br&page=1`)
     const toprated = await axios.get(`https://api.themoviedb.org/3/movie/top_rated?api_key=86ff22163d48cfd8567997262922738a&language=pt-br&page=1`)
-
     return {
         props: {
             listaFilms: filmesNow.data.results,

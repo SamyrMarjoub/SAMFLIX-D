@@ -3,6 +3,7 @@ import styles from '../styles/Header.module.css'
 import { FaSearch, FaUser } from 'react-icons/fa'
 import Link from 'next/link'
 import { useEffect } from 'react'
+import Sobre from '../pages/sobre'
 
 export default function header() {
 
@@ -16,18 +17,29 @@ export default function header() {
         const inicio = document.querySelector('.inicio')
         const filme = document.querySelector('.filme')
         const series = document.querySelector('.series')
+        const about = document.querySelector('.sobre')
+        
         if (pagina === '0') {
             inicio.classList.add('firstli')
             filme.classList.remove('firstli')
             series.classList.remove('firstli')
+            about.classList.remove('firstli')
+
         } else if (pagina === '1') {
             filme.classList.add('firstli')
             inicio.classList.remove('firstli')
+            about.classList.remove('firstli')
             series.classList.remove('firstli')
         } else if (pagina === '2') {
             series.classList.add('firstli')
             filme.classList.remove('firstli')
+            about.classList.remove('firstli')
             inicio.classList.remove('firstli')
+        }else if(pagina === '3'){
+            series.classList.remove('firstli')
+            filme.classList.remove('firstli')
+            inicio.classList.remove('firstli')
+            about.classList.add('firstli')
         }
         console.log(pagina)
     }
@@ -41,12 +53,14 @@ export default function header() {
                         <li className={`${styles.li} inicio`}>Inicio</li>
                         <li className={`${styles.li} filme`}><Link href='/filmes'>Filmes</Link> </li>
                         <li className={`${styles.li} series`}><Link href={'/series'}>Series</Link> </li>
-                        <li className={`${styles.li} anime`}>Animes</li>
+                        <li className={`${styles.li} sobre`}><Link href={'/sobre'}>Sobre</Link> </li>
+
 
                     </ul>
                 </div>
                 <div className={styles.headercontainerf2}>
-                    <FaSearch className={`${styles.icon} ${styles.iconsearch}`} />
+                    <Link href={'/search'}>
+                        <FaSearch className={`${styles.icon} ${styles.iconsearch}`} /></Link>
                     <div className={styles.butao}>
                         <FaUser className={`${styles.icon} ${styles.usericon}`} />
                         <span className={styles.minhaconta}>MINHA CONTA</span>

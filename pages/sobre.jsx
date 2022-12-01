@@ -1,12 +1,15 @@
 import Head from 'next/head'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
-import Header from '../components/header'
+import Header from '../components/headerA'
 import Link from 'next/link'
+import { useEffect } from 'react'
 export default function Sobre({ autor }) {
 
 
-
+    useEffect(() => {
+        localStorage.setItem('pagina', 3)
+    }, [])
     //STATIC PAGE ------------------------
     //STATIC PAGE ------------------------
     //STATIC PAGE ------------------------
@@ -15,16 +18,20 @@ export default function Sobre({ autor }) {
 
 
     return (
-        <div className={styles.container}>
+        <>
+            <Header />
+            <div className={styles.container}>
 
-            <main className={styles.main}>
-                <h1 className={styles.title}>
-                    O sistema é feito usando Server side render e client side render, e também static render. esta página é estatica.
-                </h1>
-                <h2>Autor: {autor}</h2>
-            </main>
+                <main className={styles.main}>
+                    <h1 className={styles.title}>
+                        O sistema é feito usando Server side render e client side render, e também static render. esta página é estatica.
+                    </h1>
+                    <h2>Autor: {autor}</h2>
+                </main>
 
-        </div>
+            </div>
+        </>
+
     )
 }
 

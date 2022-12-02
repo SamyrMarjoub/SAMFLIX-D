@@ -46,6 +46,11 @@ export default function filmes({ SeriesNow, topRated }) {
             ]
         }
     )
+    const [query, setQuery] = useState('')
+    const [serieSearched, setSerierSearched] = useState(topRated)
+    const [categoria, setCategoria] = useState('0')
+    const [ordernar, setOrdenar] = useState('')
+
     useEffect(() => {
         paginacao()
     }, [])
@@ -53,6 +58,45 @@ export default function filmes({ SeriesNow, topRated }) {
         localStorage.setItem('pagina', 2)
 
     }
+
+    async function searchTv(e) {
+        e.preventDefault()
+        const queryI = await axios.get(`https://api.themoviedb.org/3/search/tv?api_key=86ff22163d48cfd8567997262922738a&language=en-US&page=1&query=${query}&include_adult=false`)
+        setQuery('')
+        setSerierSearched(queryI.data.results)
+
+    }
+    useEffect(() => {
+        console.log(categoria)
+        testee()
+    }, [categoria])
+
+    useEffect(() => {
+        OrderNarPor()
+    }, [ordernar])
+
+
+    async function OrderNarPor() {
+        if (ordernar === '') {
+            return
+        } else {
+            const query = await axios.get(`https://api.themoviedb.org/3/discover/movie?api_key=86ff22163d48cfd8567997262922738a&language=en-US&sort_by=${ordernar}&include_adult=false&include_video=false&page=1&with_watch_monetization_types=flatrate`)
+            setSerierSearched(query.data.results)
+        }
+
+    }
+
+    const testee = async () => {
+        if (categoria === '0') {
+            return
+        } else {
+            const query = await axios.get(`https://api.themoviedb.org/3/discover/tv?api_key=86ff22163d48cfd8567997262922738a&language=en-US&sort_by=popularity.desc&page=1&timezone=America%2FNew_York&with_genres=${categoria}&include_null_first_air_dates=false&with_watch_monetization_types=flatrate&with_status=0&with_type=0`)
+            setSerierSearched(query.data.results)
+        }
+    }
+
+
+
     return (
         <>
             <Head>
@@ -108,7 +152,10 @@ export default function filmes({ SeriesNow, topRated }) {
                         <div className={styles.containerseatchdiv}>
                             <div className={styles.searchdivsf}>
                                 <span className={styles.spanpesquisesearch}>PESQUISE</span>
-                                <input placeholder='Pesquise por titulo' className={styles.searchinput} type={'search'} />
+                                <form id='searchinput' onSubmit={searchTv}>
+                                    <input value={query} onChange={(e) => { setQuery(e.target.value) }} placeholder='Pesquise por titulo' className={styles.searchinput} type={'search'} />
+
+                                </form>
                                 <FaSearch className={styles.svgiconsearch} />
                             </div>
 
@@ -117,15 +164,17 @@ export default function filmes({ SeriesNow, topRated }) {
                                 <div className={styles.header50top}>
                                     <div className={styles.containerfilmargin}>
                                         <span className={styles.spanpesquisesearch}>CATEGORIA</span>
-                                        <select name="" id="select">
-                                            <option value="todas">Todas</option>
-                                            <option value="comedia">Comedia</option>
-                                            <option value="ação">Ação</option>
-                                            <option value="drama">Drama</option>
-                                            <option value="romance">Romance</option>
-                                            <option value="ficção">Ficção cientifica</option>
+                                        <form id='formselect'>
+                                            <select name="" id="select" onChange={(e) => { setCategoria(e.target.value) }}>
+                                                <option value="todas">Todas</option>
+                                                <option value="10759">Ação e aventura</option>
+                                                <option value="16">Animação</option>
+                                                <option value="35">Comedia</option>
+                                                <option value="80">Crime</option>
+                                                <option value="10762">Infantil</option>
 
-                                        </select>
+                                            </select>
+                                        </form>
                                     </div>
                                 </div>
 
@@ -134,13 +183,10 @@ export default function filmes({ SeriesNow, topRated }) {
                                 <div className={styles.header50top}>
                                     <div className={styles.containerfilmargin}>
                                         <span className={styles.spanpesquisesearch}>ORDENAR POR</span>
-                                        <select name="" id="select">
-                                            <option value="todas">Nenhuma</option>
-                                            <option value="comedia">Comedia</option>
-                                            <option value="ação">Ação</option>
-                                            <option value="drama">Drama</option>
-                                            <option value="romance">Romance</option>
-                                            <option value="ficção">Ficção cientifica</option>
+                                        <select name="" id="select" onChange={(e) => { setOrdenar(e.target.value) }}>
+                                            <option value="release_date.asc">Ano</option>
+                                            <option value="original_title.asc">Titulo</option>
+                                            <option value="vote_count.asc">Rate</option>
 
                                         </select>
                                     </div>
@@ -162,7 +208,7 @@ export default function filmes({ SeriesNow, topRated }) {
 
                     </div>
                     <div className={styles.gridfilmserie}>
-                        {topRated.map((e) => {
+                        {serieSearched.map((e) => {
                             return (
                                 <Link href={`/series/${e.id}`} key={e.id}>
                                     <div style={{ backgroundImage: `url(https://image.tmdb.org/t/p/original${e.poster_path}` }} className={`${'tocansado'} ${styles.griddiv}`} >
@@ -171,7 +217,7 @@ export default function filmes({ SeriesNow, topRated }) {
                                                 <div className={styles.filmslidedata}>
                                                     <h3 className={styles.titlename}>{e.name}</h3>
                                                     <div className={styles.releevote}>
-                                                        <span>{e.first_air_date.slice(0, 4)}</span>
+                                                        <span>{String(e.first_air_date).slice(0,4)}</span>
                                                         <span className={styles.voteStar}><FaRegStar /> {e.vote_average.toFixed(1)}</span>
                                                     </div>
 

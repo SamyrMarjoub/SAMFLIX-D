@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useMemo, useCallback } from 'react'
 import Header from '../components/header'
 import Footer from '../components/FooterFilmSerie'
 import axios from 'axios'
@@ -8,6 +8,7 @@ import Slider from "react-slick";
 import Link from 'next/link'
 import { FaRegStar, FaSearch } from 'react-icons/fa'
 import { BiFilterAlt } from 'react-icons/bi'
+
 export default function filmes({ listaFilms, topRated }) {
 
     const [settings, setTings] = useState(
@@ -47,7 +48,9 @@ export default function filmes({ listaFilms, topRated }) {
         }
     )
     const [query, setQuery] = useState('')
-    const [moviesSearched, setMoviesSearched] = useState([])
+    const [moviesSearched, setMoviesSearched] = useState(topRated)
+    const [categoria, setCategoria] = useState('0')
+    const [ordernar, setOrdenar] = useState('')
 
     useEffect(() => {
         paginacao()
@@ -56,16 +59,47 @@ export default function filmes({ listaFilms, topRated }) {
         localStorage.setItem('pagina', 1)
 
     }
-    useEffect(()=>{
-console.log(moviesSearched)
-    }, [moviesSearched])
+
     async function searchedmovie(e) {
         e.preventDefault()
         const queryI = await axios.get(`https://api.themoviedb.org/3/search/movie?api_key=86ff22163d48cfd8567997262922738a&language=en-US&query=${query}&page=1&include_adult=false`)
         setQuery('')
         setMoviesSearched(queryI.data.results)
         console.log(moviesSearched)
+
     }
+    useEffect(() => {
+        testee()
+    }, [categoria])
+
+    useEffect(() => {
+        OrderNarPor()
+    }, [ordernar])
+
+
+    async function OrderNarPor() {
+        if(ordernar === ''){
+            return
+        }else{
+            const query = await axios.get(`https://api.themoviedb.org/3/discover/movie?api_key=86ff22163d48cfd8567997262922738a&language=en-US&sort_by=${ordernar}&include_adult=false&include_video=false&page=1&with_watch_monetization_types=flatrate`)
+            setMoviesSearched(query.data.results)
+        }
+       
+    }
+
+    const testee = async () => {
+        if (categoria === '0') {
+            return
+        } else {
+            const query = await axios.get(`https://api.themoviedb.org/3/discover/movie?api_key=86ff22163d48cfd8567997262922738a&language=pt-br&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&with_genres=${categoria}&with_watch_monetization_types=flatrate`)
+            setMoviesSearched(query.data.results)
+        }
+    }
+    // async function ordernarEGenero(){
+
+    // }
+
+
     return (
         <>
             <Head>
@@ -116,7 +150,7 @@ console.log(moviesSearched)
                         <div className={styles.containerseatchdiv}>
                             <div className={styles.searchdivsf}>
                                 <span className={styles.spanpesquisesearch}>PESQUISE</span>
-                                <form onSubmit={searchedmovie}>
+                                <form id='searchinput' onSubmit={searchedmovie}>
                                     <input value={query} onChange={(e) => { setQuery(e.target.value) }} placeholder='Pesquise por titulo' className={styles.searchinput} type={'search'} />
 
                                 </form>
@@ -128,15 +162,20 @@ console.log(moviesSearched)
                                 <div className={styles.header50top}>
                                     <div className={styles.containerfilmargin}>
                                         <span className={styles.spanpesquisesearch}>CATEGORIA</span>
-                                        <select name="" id="select">
-                                            <option value="todas">Todas</option>
-                                            <option value="comedia">Comedia</option>
-                                            <option value="ação">Ação</option>
-                                            <option value="drama">Drama</option>
-                                            <option value="romance">Romance</option>
-                                            <option value="ficção">Ficção cientifica</option>
+                                        <form id='formselect'>
+                                            <select name="" id="select" onChange={(e) => { setCategoria(e.target.value) }}>
+                                                <option value="todas">Todas</option>
+                                                <option value="35">Comedia</option>
+                                                <option value="28">Ação</option>
+                                                <option value="18">Drama</option>
+                                                <option value="10749">Romance</option>
+                                                <option value="878">Ficção cientifica</option>
 
-                                        </select>
+                                            </select>
+                                        </form>
+
+
+
                                     </div>
                                 </div>
 
@@ -145,13 +184,10 @@ console.log(moviesSearched)
                                 <div className={styles.header50top}>
                                     <div className={styles.containerfilmargin}>
                                         <span className={styles.spanpesquisesearch}>ORDENAR POR</span>
-                                        <select name="" id="select">
-                                            <option value="todas">Nenhuma</option>
-                                            <option value="comedia">Comedia</option>
-                                            <option value="ação">Ação</option>
-                                            <option value="drama">Drama</option>
-                                            <option value="romance">Romance</option>
-                                            <option value="ficção">Ficção cientifica</option>
+                                        <select name="" id="select" onChange={(e) => { setOrdenar(e.target.value) }}>
+                                            <option value="release_date.asc">Ano</option>
+                                            <option value="original_title.asc">Titulo</option>
+                                            <option value="vote_count.asc">Rate</option>
 
                                         </select>
                                     </div>
@@ -173,7 +209,7 @@ console.log(moviesSearched)
 
                     </div>
                     <div className={styles.gridfilmserie}>
-                        {topRated.map((e) => {
+                        {moviesSearched.map((e) => {
                             return (
                                 <Link href={`/movie/${e.id}`} key={e.id}>
                                     <div style={{ backgroundImage: `url(https://image.tmdb.org/t/p/original${e.poster_path}` }} className={`${'tocansado'} ${styles.griddiv}`} >

@@ -1,6 +1,6 @@
-@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+/* @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Mulish:wght@300&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Mulish:wght@800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Mulish:wght@800&display=swap'); */
 
 html,
 body {
@@ -210,6 +210,7 @@ a {
   width: 100%;
   margin: auto;
   border: none;
+ 
 }
 .select-items div:hover, .same-as-selected {
   background-color: rgba(0, 0, 0, 0.1);
@@ -218,7 +219,18 @@ a {
   background-color: black;
   color: white;
 }
-
+#searchinput{
+  display: flex;
+  height: 100%;
+}
+#formselect{
+  display: flex;
+  height: 100%;
+}
+.testandodiv{
+  height: 6000px;
+  background-color: red;
+}
 @media (prefers-color-scheme: dark) {
   html {
     color-scheme: dark;

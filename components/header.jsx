@@ -16,17 +16,26 @@ export default function header() {
         const inicio = document.querySelector('.inicio')
         const filme = document.querySelector('.filme')
         const series = document.querySelector('.series')
+        const sobre = document.querySelector('.sobre')
         if (pagina === '0') {
             inicio.classList.add('firstli')
             filme.classList.remove('firstli')
             series.classList.remove('firstli')
+            sobre.classList.remove('firstli')
         } else if (pagina === '1') {
             filme.classList.add('firstli')
             inicio.classList.remove('firstli')
+            sobre.classList.remove('firstli')
             series.classList.remove('firstli')
         } else if (pagina === '2') {
             series.classList.add('firstli')
             filme.classList.remove('firstli')
+            sobre.classList.remove('firstli')
+            inicio.classList.remove('firstli')
+        }else if(pagina === '3'){
+            series.classList.remove('firstli')
+            filme.classList.remove('firstli')
+            sobre.classList.add('firstli')
             inicio.classList.remove('firstli')
         }
         console.log(pagina)
@@ -41,7 +50,7 @@ export default function header() {
                         <li className={`${styles.li} inicio`}><Link href={'/'}>Inicio</Link> </li>
                         <li className={`${styles.li} filme`}> <Link href={'/filmes'}> Filmes</Link></li>
                         <li className={`${styles.li} series`}> <Link href={'/series'}> Series</Link></li>
-                        <li className={`${styles.li} animes`}><Link href={'/sobre'}>Sobre</Link> </li>
+                        <li className={`${styles.li} sobre`}><Link href={'/sobre'}>Sobre</Link> </li>
 
                     </ul>
                 </div>

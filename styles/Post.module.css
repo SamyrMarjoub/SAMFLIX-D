@@ -808,14 +808,13 @@ transform: scale(1.05);
 .paginationcontentdiv:hover{
     background-color: #383c47;
 }
-.paginationselected{
-    background: linear-gradient(rgb(24, 27, 31), rgb(24, 27, 31)) padding-box, linear-gradient(to right, var(--blue), #a6cefd) border-box;
-    border-radius: 20px;
-    border: 2px solid transparent;
-}
+
 .footerfs{
     width: 100% !important;
 }
 .cntn{
     margin-top: 30px;
+}
+.option{
+    height: 50px;
 }

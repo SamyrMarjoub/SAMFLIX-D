@@ -210,6 +210,7 @@ a {
   width: 100%;
   margin: auto;
   border: none;
+
  
 }
 .select-items div:hover, .same-as-selected {
@@ -230,6 +231,18 @@ a {
 .testandodiv{
   height: 6000px;
   background-color: red;
+}
+.paginationselected{
+  background: linear-gradient(rgb(24, 27, 31), rgb(24, 27, 31)) padding-box, linear-gradient(to right, var(--blue), #a6cefd) border-box;
+  border-radius: 20px;
+  border: 2px solid transparent;
+}
+.activebuttonfilter {
+  background: linear-gradient(rgb(24, 27, 31), rgb(24, 27, 31)) padding-box,
+    linear-gradient(to right, var(--blue), #a6cefd) border-box !important;
+  border-radius: 50em;
+  border: 2px solid transparent;
+
 }
 @media (prefers-color-scheme: dark) {
   html {

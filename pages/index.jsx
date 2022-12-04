@@ -16,7 +16,7 @@ import FooterA from '../components/Footer.jsx'
 {/* SERVER SIDE RENDER PAGE -------------- */ }
 {/* SERVER SIDE RENDER PAGE -------------- */ }
 
-export default function Home({ lista, series, popularFilm, nowFilm, filmTopRated }) {
+export default function Home({ lista, series, popularFilm, nowFilm, filmTopRated, novasSeries, topratedseries, seriespopular }) {
 
   const [settings, setTings] = useState(
     {
@@ -56,6 +56,7 @@ export default function Home({ lista, series, popularFilm, nowFilm, filmTopRated
   )
   const [idFilm, setIdFilm] = useState(0)
   const [FilmEscolhido, setFilmEscolhido] = useState(0)
+  const [serie, setSerieEscolhida] = useState(4)
 
   function ImageDinamica() {
     const div = document.querySelector('.maincontainer')
@@ -63,6 +64,7 @@ export default function Home({ lista, series, popularFilm, nowFilm, filmTopRated
       setIdFilm(option.id)
       return `https://image.tmdb.org/t/p/original${option.backdrop_path}`
     })
+
     div.style.backgroundImage = `url(${url})`
 
   }
@@ -76,6 +78,14 @@ export default function Home({ lista, series, popularFilm, nowFilm, filmTopRated
       setFilmEscolhido(2)
     } else if (id === '3') {
       setFilmEscolhido(3)
+    } else if (id === '4') {
+      setSerieEscolhida(4)
+    } else if (id === '5') {
+      setSerieEscolhida(5)
+    } else if (id === '6') {
+      setSerieEscolhida(6)
+    } else if (id === '7') {
+      setSerieEscolhida(7)
     }
   }
 
@@ -104,7 +114,7 @@ export default function Home({ lista, series, popularFilm, nowFilm, filmTopRated
             )
           })}
           <div className={styles.divmainsbuton}>
-          <Link href={`/movie/${idFilm}`}>  <button className={styles.bassistirfilme}> <FaPlayCircle className={styles.imgplay} /> <span className={styles.spanasstir}> Assistir Filme</span> </button></Link>
+            <Link href={`/movie/${idFilm}`}>  <button className={styles.bassistirfilme}> <FaPlayCircle className={styles.imgplay} /> <span className={styles.spanasstir}> Assistir Filme</span> </button></Link>
             <button className={styles.bmaistarde}> <FaClock className={styles.imgplay} /> <span className={styles.spanmaistarde}>Adicionar a ver depois</span></button>
           </div>
 
@@ -116,7 +126,7 @@ export default function Home({ lista, series, popularFilm, nowFilm, filmTopRated
           <div className={styles.headerfilterdiv}>
             <div className={styles.headerfilterdivc}>
               <h2 className={styles.h2}>Assistir Filmes online</h2>
-              <button id='0' onClick={buttonChoose} className={`${styles.buttonfilter} ${styles.activebuttonfilter}`}>Lançamentos</button>
+              <button id='0' onClick={buttonChoose} className={`${styles.buttonfilter} activebuttonfilter`}>Lançamentos</button>
               <button id='1' onClick={buttonChoose} className={styles.buttonfilter}>Assistidos agora</button>
               <button id='2' onClick={buttonChoose} className={styles.buttonfilter}>Mais Populares</button>
               <button id='3' onClick={buttonChoose} className={styles.buttonfilter}>Mais Avaliados</button>
@@ -243,42 +253,130 @@ export default function Home({ lista, series, popularFilm, nowFilm, filmTopRated
           <div className={`${styles.bodydivfilmes} ${styles.bodydiviflmes2}`}>
             <div className={styles.headerfilterdivc}>
               <h2 className={styles.h2}>Assistir Series online</h2>
-              <button className={`${styles.buttonfilter} ${styles.activebuttonfilter}`}>Novos Episodios</button>
-              <button className={styles.buttonfilter}>Novas séries</button>
-              <button className={styles.buttonfilter}>Populares</button>
-              <button className={styles.buttonfilter}>Mais Assistidos</button>
+              <button onClick={buttonChoose} id='4' className={`${styles.buttonfilter} activebuttonfilter`}>Novos Episodios</button>
+              <button onClick={buttonChoose} id='5' className={styles.buttonfilter}>Novas séries</button>
+              <button onClick={buttonChoose} id='6' className={styles.buttonfilter}>Populares</button>
+              <button onClick={buttonChoose} id='7' className={styles.buttonfilter}>Mais Bem Avaliadas</button>
 
             </div>
           </div>
           <div className={styles.bodydivfilmes}>
             <div className={styles.bodydivfilmescontainer}>
-              <Slider {...settings}>
-                {series.map((e) => {
-                  return (
-                    <Link href={`/series/${e.id}`} key={e.id}>
-                    <div className='divsurlfilmesa'>
-                      <div style={{ backgroundImage: `url(https://image.tmdb.org/t/p/original${e.poster_path}` }} className='tocansado'>
-                        <div className={styles.gradientto}>
-                          <div className={styles.containerdsfa}>
-                            <div className={styles.filmslidedata}>
-                              <h3 className={styles.titlename}>{e.name}</h3>
-                              <div className={styles.releevote}>
-                                <span>{e.first_air_date.slice(0, 4)}</span>
-                                <span className={styles.voteStar}><FaRegStar /> {e.vote_average.toFixed(1)}</span>
+              {serie === 4 ? <>
+                <Slider {...settings}>
+                  {series.map((e) => {
+                    return (
+                      <Link href={`/series/${e.id}`} key={e.id}>
+                        <div className='divsurlfilmesa'>
+                          <div style={{ backgroundImage: `url(https://image.tmdb.org/t/p/original${e.poster_path}` }} className='tocansado'>
+                            <div className={styles.gradientto}>
+                              <div className={styles.containerdsfa}>
+                                <div className={styles.filmslidedata}>
+                                  <h3 className={styles.titlename}>{e.name}</h3>
+                                  <div className={styles.releevote}>
+                                    <span>{e.first_air_date.slice(0, 4)}</span>
+                                    <span className={styles.voteStar}><FaRegStar /> {e.vote_average.toFixed(1)}</span>
+                                  </div>
+
+                                </div>
                               </div>
+
 
                             </div>
                           </div>
-
-
                         </div>
-                      </div>
-                    </div>
-                    </Link>
-                  
-                  )
-                })}
-              </Slider>
+                      </Link>
+
+                    )
+                  })}
+                </Slider>
+
+              </> : serie === 5 ? <>
+                <Slider {...settings}>
+                  {novasSeries.map((e) => {
+                    return (
+                      <Link href={`/series/${e.id}`} key={e.id}>
+                        <div className='divsurlfilmesa'>
+                          <div style={{ backgroundImage: `url(https://image.tmdb.org/t/p/original${e.poster_path}` }} className='tocansado'>
+                            <div className={styles.gradientto}>
+                              <div className={styles.containerdsfa}>
+                                <div className={styles.filmslidedata}>
+                                  <h3 className={styles.titlename}>{e.name}</h3>
+                                  <div className={styles.releevote}>
+                                    <span>{e.first_air_date.slice(0, 4)}</span>
+                                    <span className={styles.voteStar}><FaRegStar /> {e.vote_average.toFixed(1)}</span>
+                                  </div>
+
+                                </div>
+                              </div>
+
+
+                            </div>
+                          </div>
+                        </div>
+                      </Link>
+
+                    )
+                  })}
+                </Slider>
+              </> : serie === 6 ? <>
+                <Slider {...settings}>
+                  {seriespopular.map((e) => {
+                    return (
+                      <Link href={`/series/${e.id}`} key={e.id}>
+                        <div className='divsurlfilmesa'>
+                          <div style={{ backgroundImage: `url(https://image.tmdb.org/t/p/original${e.poster_path}` }} className='tocansado'>
+                            <div className={styles.gradientto}>
+                              <div className={styles.containerdsfa}>
+                                <div className={styles.filmslidedata}>
+                                  <h3 className={styles.titlename}>{e.name}</h3>
+                                  <div className={styles.releevote}>
+                                    <span>{e.first_air_date.slice(0, 4)}</span>
+                                    <span className={styles.voteStar}><FaRegStar /> {e.vote_average.toFixed(1)}</span>
+                                  </div>
+
+                                </div>
+                              </div>
+
+
+                            </div>
+                          </div>
+                        </div>
+                      </Link>
+
+                    )
+                  })}
+                </Slider>
+              </> : <>
+                <Slider {...settings}>
+                  {topratedseries.map((e) => {
+                    return (
+                      <Link href={`/series/${e.id}`} key={e.id}>
+                        <div className='divsurlfilmesa'>
+                          <div style={{ backgroundImage: `url(https://image.tmdb.org/t/p/original${e.poster_path}` }} className='tocansado'>
+                            <div className={styles.gradientto}>
+                              <div className={styles.containerdsfa}>
+                                <div className={styles.filmslidedata}>
+                                  <h3 className={styles.titlename}>{e.name}</h3>
+                                  <div className={styles.releevote}>
+                                    <span>{e.first_air_date.slice(0, 4)}</span>
+                                    <span className={styles.voteStar}><FaRegStar /> {e.vote_average.toFixed(1)}</span>
+                                  </div>
+
+                                </div>
+                              </div>
+
+
+                            </div>
+                          </div>
+                        </div>
+                      </Link>
+
+                    )
+                  })}
+                </Slider>
+              </>}
+
             </div>
           </div>
           <FooterA />
@@ -294,7 +392,10 @@ export default function Home({ lista, series, popularFilm, nowFilm, filmTopRated
 
 export async function getServerSideProps() {
   const filmes = await fetch('http://localhost:3000/api/trending')
-  const series2 = await axios.get('https://api.themoviedb.org/3/tv/popular?api_key=86ff22163d48cfd8567997262922738a&language=pt-br&')
+  const series = await axios.get('https://api.themoviedb.org/3/tv/on_the_air?api_key=86ff22163d48cfd8567997262922738a&language=pt-br&page=1')
+  const novasSeries = await axios.get('https://api.themoviedb.org/3/tv/airing_today?api_key=86ff22163d48cfd8567997262922738a&language=pt-br&page=1')
+  const seriespopular = await axios.get('https://api.themoviedb.org/3/tv/popular?api_key=86ff22163d48cfd8567997262922738a&language=en-US&page=1')
+  const topratedseries = await axios.get('https://api.themoviedb.org/3/tv/top_rated?api_key=86ff22163d48cfd8567997262922738a&language=pt-br&page=1')
   const filmesNow = await axios.get('https://api.themoviedb.org/3/movie/now_playing?api_key=86ff22163d48cfd8567997262922738a&language=pt-br&page=1')
   const filmesPopular = await axios.get('https://api.themoviedb.org/3/movie/popular?api_key=86ff22163d48cfd8567997262922738a&language=pt-br&page=1')
   const filmTopRated = await axios.get('https://api.themoviedb.org/3/movie/top_rated?api_key=86ff22163d48cfd8567997262922738a&language=pt-br&page=1')
@@ -304,13 +405,13 @@ export async function getServerSideProps() {
   return {
     props: {
       lista: json.list,
-      series: series2.data.results,
+      series: series.data.results,
       popularFilm: filmesPopular.data.results,
       nowFilm: filmesNow.data.results,
-      filmTopRated: filmTopRated.data.results
-
-
-
+      filmTopRated: filmTopRated.data.results,
+      novasSeries: novasSeries.data.results,
+      topratedseries: topratedseries.data.results,
+      seriespopular: seriespopular.data.results
     }
   }
 }

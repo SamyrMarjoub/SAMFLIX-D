@@ -8,7 +8,7 @@ import Slider from "react-slick";
 import Link from 'next/link'
 import { FaRegStar, FaSearch } from 'react-icons/fa'
 import { BiFilterAlt } from 'react-icons/bi'
-export default function filmes({ SeriesNow, topRated }) {
+export default function filmes({ SeriesNow, topRated, pagina }) {
 
     const [settings, setTings] = useState(
         {
@@ -48,14 +48,17 @@ export default function filmes({ SeriesNow, topRated }) {
     )
     const [query, setQuery] = useState('')
     const [serieSearched, setSerierSearched] = useState(topRated)
-    const [categoria, setCategoria] = useState('0')
+    const [categoria, setCategoria] = useState('')
     const [ordernar, setOrdenar] = useState('')
+    const [page, setpage] = useState(1)
 
     useEffect(() => {
         paginacao()
+
     }, [])
     function paginacao() {
         localStorage.setItem('pagina', 2)
+
 
     }
 
@@ -64,8 +67,9 @@ export default function filmes({ SeriesNow, topRated }) {
         const queryI = await axios.get(`https://api.themoviedb.org/3/search/tv?api_key=86ff22163d48cfd8567997262922738a&language=en-US&page=1&query=${query}&include_adult=false`)
         setQuery('')
         setSerierSearched(queryI.data.results)
-
+        setQueryAtual(serieSearched)
     }
+
     useEffect(() => {
         console.log(categoria)
         testee()
@@ -80,19 +84,86 @@ export default function filmes({ SeriesNow, topRated }) {
         if (ordernar === '') {
             return
         } else {
-            const query = await axios.get(`https://api.themoviedb.org/3/discover/movie?api_key=86ff22163d48cfd8567997262922738a&language=en-US&sort_by=${ordernar}&include_adult=false&include_video=false&page=1&with_watch_monetization_types=flatrate`)
+            const query = await axios.get(`https://api.themoviedb.org/3/discover/tv?api_key=86ff22163d48cfd8567997262922738a&language=pt-br&sort_by=${ordernar}&page=1&with_genres=${categoria}&include_null_first_air_dates=false&with_watch_monetization_types=flatrate&with_status=0&with_type=0`)
             setSerierSearched(query.data.results)
+
         }
 
     }
 
     const testee = async () => {
         if (categoria === '0') {
-            return
-        } else {
-            const query = await axios.get(`https://api.themoviedb.org/3/discover/tv?api_key=86ff22163d48cfd8567997262922738a&language=en-US&sort_by=popularity.desc&page=1&timezone=America%2FNew_York&with_genres=${categoria}&include_null_first_air_dates=false&with_watch_monetization_types=flatrate&with_status=0&with_type=0`)
+            const query = await axios.get(`https://api.themoviedb.org/3/discover/tv?api_key=86ff22163d48cfd8567997262922738a&language=pt-br&sort_by=popularity.desc&page=1&include_null_first_air_dates=false&with_watch_monetization_types=flatrate&with_status=0&with_type=0`)
             setSerierSearched(query.data.results)
+
+        } else {
+            const query = await axios.get(`https://api.themoviedb.org/3/discover/tv?api_key=86ff22163d48cfd8567997262922738a&language=en-US&sort_by=${ordernar}&page=1&timezone=America%2FNew_York&with_genres=${categoria}&include_null_first_air_dates=false&with_watch_monetization_types=flatrate&with_status=0&with_type=0`)
+            setSerierSearched(query.data.results)
+
         }
+    }
+    async function paginacoes(e) {
+        const paginaz = e.currentTarget.id
+        if (paginaz === '1') {
+            const div = document.getElementById('1')
+            div.classList.add('paginationselected')
+            document.getElementById('2').classList.remove('paginationselected')
+            document.getElementById('3').classList.remove('paginationselected')
+            document.getElementById('4').classList.remove('paginationselected')
+            document.getElementById('5').classList.remove('paginationselected')
+
+        } else if (paginaz === '2') {
+            const div = document.getElementById('2')
+            div.classList.add('paginationselected')
+            document.getElementById('1').classList.remove('paginationselected')
+            document.getElementById('3').classList.remove('paginationselected')
+            document.getElementById('4').classList.remove('paginationselected')
+            document.getElementById('5').classList.remove('paginationselected')
+        } else if (paginaz === '3') {
+            const div = document.getElementById('3')
+            div.classList.add('paginationselected')
+            document.getElementById('2').classList.remove('paginationselected')
+            document.getElementById('1').classList.remove('paginationselected')
+            document.getElementById('4').classList.remove('paginationselected')
+            document.getElementById('5').classList.remove('paginationselected')
+
+        } else if (paginaz === '4') {
+            const div = document.getElementById('4')
+            div.classList.add('paginationselected')
+            document.getElementById('2').classList.remove('paginationselected')
+            document.getElementById('3').classList.remove('paginationselected')
+            document.getElementById('1').classList.remove('paginationselected')
+            document.getElementById('5').classList.remove('paginationselected')
+        } else if (paginaz === '5') {
+            const div = document.getElementById('5')
+            div.classList.add('paginationselected')
+            document.getElementById('2').classList.remove('paginationselected')
+            document.getElementById('3').classList.remove('paginationselected')
+            document.getElementById('4').classList.remove('paginationselected')
+            document.getElementById('1').classList.remove('paginationselected')
+        } 
+
+        if (categoria === '0') {
+            if (e.currentTarget.id !== 'next') {
+                const query = await axios.get(`https://api.themoviedb.org/3/discover/tv?api_key=86ff22163d48cfd8567997262922738a&language=pt-br&sort_by=popularity.desc&page=${e.currentTarget.id}&include_null_first_air_dates=false&with_watch_monetization_types=flatrate&with_status=0&with_type=0`)
+                setSerierSearched(query.data.results)
+            } else {
+                setpage(page + 1)
+                const query = await axios.get(`https://api.themoviedb.org/3/discover/tv?api_key=86ff22163d48cfd8567997262922738a&language=pt-br&sort_by=popularity.desc&page=${page}&include_null_first_air_dates=false&with_watch_monetization_types=flatrate&with_status=0&with_type=0`)
+                setSerierSearched(query.data.results)
+            }
+        } else {
+            if (e.currentTarget.id !== 'next') {
+                const query = await axios.get(`https://api.themoviedb.org/3/discover/tv?api_key=86ff22163d48cfd8567997262922738a&language=en-US&sort_by=${ordernar}&page=${e.currentTarget.id}&timezone=America%2FNew_York&with_genres=${categoria}&include_null_first_air_dates=false&with_watch_monetization_types=flatrate&with_status=0&with_type=0`)
+                setSerierSearched(query.data.results)
+            } else {
+                setpage(page + 1)
+                const query = await axios.get(`https://api.themoviedb.org/3/discover/tv?api_key=86ff22163d48cfd8567997262922738a&language=en-US&sort_by=${ordernar}&page=${page}&timezone=America%2FNew_York&with_genres=${categoria}&include_null_first_air_dates=false&with_watch_monetization_types=flatrate&with_status=0&with_type=0`)
+                setSerierSearched(query.data.results)
+            }
+
+        }
+
     }
 
 
@@ -100,7 +171,7 @@ export default function filmes({ SeriesNow, topRated }) {
     return (
         <>
             <Head>
-                <title>SamFlix</title>
+                <title>SamFlix - Series</title>
                 <meta name="description" content="Generated by create next app" />
                 <link rel="icon" href="/favicon.ico" />
                 <link rel="stylesheet" type="text/css" charset="UTF-8" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css" />
@@ -166,12 +237,12 @@ export default function filmes({ SeriesNow, topRated }) {
                                         <span className={styles.spanpesquisesearch}>CATEGORIA</span>
                                         <form id='formselect'>
                                             <select name="" id="select" onChange={(e) => { setCategoria(e.target.value) }}>
-                                                <option value="todas">Todas</option>
-                                                <option value="10759">Ação e aventura</option>
-                                                <option value="16">Animação</option>
-                                                <option value="35">Comedia</option>
-                                                <option value="80">Crime</option>
-                                                <option value="10762">Infantil</option>
+                                                <option className='option' value="">Todas</option>
+                                                <option className='option' value="10759">Ação e aventura</option>
+                                                <option className='option' value="16">Animação</option>
+                                                <option className='option' value="35">Comedia</option>
+                                                <option className='option' value="80">Crime</option>
+                                                <option className='option' value="10762">Infantil</option>
 
                                             </select>
                                         </form>
@@ -184,9 +255,9 @@ export default function filmes({ SeriesNow, topRated }) {
                                     <div className={styles.containerfilmargin}>
                                         <span className={styles.spanpesquisesearch}>ORDENAR POR</span>
                                         <select name="" id="select" onChange={(e) => { setOrdenar(e.target.value) }}>
-                                            <option value="release_date.asc">Ano</option>
-                                            <option value="original_title.asc">Titulo</option>
-                                            <option value="vote_count.asc">Rate</option>
+                                            <option className='option' value="release_date.asc">Ano</option>
+                                            <option className='option' value="original_title.asc">Titulo</option>
+                                            <option className='option' value="vote_count.asc">Rate</option>
 
                                         </select>
                                     </div>
@@ -217,7 +288,7 @@ export default function filmes({ SeriesNow, topRated }) {
                                                 <div className={styles.filmslidedata}>
                                                     <h3 className={styles.titlename}>{e.name}</h3>
                                                     <div className={styles.releevote}>
-                                                        <span>{String(e.first_air_date).slice(0,4)}</span>
+                                                        <span>{String(e.first_air_date).slice(0, 4)}</span>
                                                         <span className={styles.voteStar}><FaRegStar /> {e.vote_average.toFixed(1)}</span>
                                                     </div>
 
@@ -234,12 +305,12 @@ export default function filmes({ SeriesNow, topRated }) {
 
                     </div>
                     <div className={styles.paginationdiv}>
-                        <div className={`${styles.paginationcontentdiv} ${styles.paginationselected}`}>1</div>
-                        <div className={styles.paginationcontentdiv}>2</div>
-                        <div className={styles.paginationcontentdiv}>3</div>
-                        <div className={styles.paginationcontentdiv}>4</div>
-                        <div className={styles.paginationcontentdiv}>5</div>
-                        <div style={{ padding: '30px' }} className={styles.paginationcontentdiv}>Próxima</div>
+                        <div id='1' onClick={paginacoes} className={`${styles.paginationcontentdiv} paginationselected`}>1</div>
+                        <div id='2' onClick={paginacoes} className={`${styles.paginationcontentdiv}`}>2</div>
+                        <div id='3' onClick={paginacoes} className={`${styles.paginationcontentdiv}`}>3</div>
+                        <div id='4' onClick={paginacoes} className={`${styles.paginationcontentdiv}`}>4</div>
+                        <div id='5' onClick={paginacoes} className={`${styles.paginationcontentdiv}`}>5</div>
+                        <div id='next' onClick={paginacoes} style={{ padding: '30px' }} className={`${styles.paginationcontentdiv}`}>Próxima</div>
 
                     </div>
                     <Footer className={styles.footerfs} />
@@ -252,12 +323,13 @@ export default function filmes({ SeriesNow, topRated }) {
 
 export async function getServerSideProps() {
     const SeriesNow = await axios.get(`https://api.themoviedb.org/3/tv/on_the_air?api_key=86ff22163d48cfd8567997262922738a&language=pt-br&page=1`)
-    const toprated = await axios.get(`https://api.themoviedb.org/3/tv/top_rated?api_key=86ff22163d48cfd8567997262922738a&language=en-US&page=1`)
+    const toprated = await axios.get(`https://api.themoviedb.org/3/discover/tv?api_key=86ff22163d48cfd8567997262922738a&language=pt-br&sort_by=popularity.desc&page=1&include_null_first_air_dates=false&with_watch_monetization_types=flatrate&with_status=0&with_type=0`)
 
     return {
         props: {
             SeriesNow: SeriesNow.data.results,
-            topRated: toprated.data.results
+            topRated: toprated.data.results,
+            pagina: toprated.data.page
 
         }
     }

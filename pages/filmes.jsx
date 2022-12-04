@@ -49,8 +49,9 @@ export default function filmes({ listaFilms, topRated }) {
     )
     const [query, setQuery] = useState('')
     const [moviesSearched, setMoviesSearched] = useState(topRated)
-    const [categoria, setCategoria] = useState('0')
+    const [categoria, setCategoria] = useState('')
     const [ordernar, setOrdenar] = useState('')
+    const [page, setpage] = useState(1)
 
     useEffect(() => {
         paginacao()
@@ -62,9 +63,9 @@ export default function filmes({ listaFilms, topRated }) {
 
     async function searchedmovie(e) {
         e.preventDefault()
-        const queryI = await axios.get(`https://api.themoviedb.org/3/search/movie?api_key=86ff22163d48cfd8567997262922738a&language=en-US&query=${query}&page=1&include_adult=false`)
+        const query = await axios.get(`https://api.themoviedb.org/3/search/movie?api_key=86ff22163d48cfd8567997262922738a&language=en-US&query=${query}&page=1&include_adult=false`)
         setQuery('')
-        setMoviesSearched(queryI.data.results)
+        setMoviesSearched(query.data.results)
         console.log(moviesSearched)
 
     }
@@ -78,32 +79,98 @@ export default function filmes({ listaFilms, topRated }) {
 
 
     async function OrderNarPor() {
-        if(ordernar === ''){
+        if (ordernar === '') {
             return
-        }else{
-            const query = await axios.get(`https://api.themoviedb.org/3/discover/movie?api_key=86ff22163d48cfd8567997262922738a&language=en-US&sort_by=${ordernar}&include_adult=false&include_video=false&page=1&with_watch_monetization_types=flatrate`)
+        } else {
+            const query = await axios.get(`https://api.themoviedb.org/3/discover/movie?api_key=86ff22163d48cfd8567997262922738a&language=en-US&sort_by=${ordernar}&include_adult=false&include_video=false&page=1&with_genres=${categoria}&with_watch_monetization_types=flatrate`)
             setMoviesSearched(query.data.results)
         }
-       
+        console.log(ordernar, categoria)
+
     }
 
     const testee = async () => {
-        if (categoria === '0') {
+        if (categoria === '0' || categoria === '') {
+            const query = await axios.get(`https://api.themoviedb.org/3/movie/popular?api_key=86ff22163d48cfd8567997262922738a&language=en-US&page=1`)
+            setMoviesSearched(query.data.results)
             return
         } else {
-            const query = await axios.get(`https://api.themoviedb.org/3/discover/movie?api_key=86ff22163d48cfd8567997262922738a&language=pt-br&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&with_genres=${categoria}&with_watch_monetization_types=flatrate`)
+            const query = await axios.get(`https://api.themoviedb.org/3/discover/movie?api_key=86ff22163d48cfd8567997262922738a&language=pt-br&sort_by=${ordernar}&include_adult=false&include_video=false&page=1&with_genres=${categoria}&with_watch_monetization_types=flatrate`)
             setMoviesSearched(query.data.results)
         }
-    }
-    // async function ordernarEGenero(){
+        console.log(ordernar, categoria)
 
-    // }
+    }
+    async function paginacoes(e) {
+        const paginaz = e.currentTarget.id
+        if (paginaz === '1') {
+            const div = document.getElementById('1')
+            div.classList.add('paginationselected')
+            document.getElementById('2').classList.remove('paginationselected')
+            document.getElementById('3').classList.remove('paginationselected')
+            document.getElementById('4').classList.remove('paginationselected')
+            document.getElementById('5').classList.remove('paginationselected')
+
+        } else if (paginaz === '2') {
+            const div = document.getElementById('2')
+            div.classList.add('paginationselected')
+            document.getElementById('1').classList.remove('paginationselected')
+            document.getElementById('3').classList.remove('paginationselected')
+            document.getElementById('4').classList.remove('paginationselected')
+            document.getElementById('5').classList.remove('paginationselected')
+        } else if (paginaz === '3') {
+            const div = document.getElementById('3')
+            div.classList.add('paginationselected')
+            document.getElementById('2').classList.remove('paginationselected')
+            document.getElementById('1').classList.remove('paginationselected')
+            document.getElementById('4').classList.remove('paginationselected')
+            document.getElementById('5').classList.remove('paginationselected')
+
+        } else if (paginaz === '4') {
+            const div = document.getElementById('4')
+            div.classList.add('paginationselected')
+            document.getElementById('2').classList.remove('paginationselected')
+            document.getElementById('3').classList.remove('paginationselected')
+            document.getElementById('1').classList.remove('paginationselected')
+            document.getElementById('5').classList.remove('paginationselected')
+        } else if (paginaz === '5') {
+            const div = document.getElementById('5')
+            div.classList.add('paginationselected')
+            document.getElementById('2').classList.remove('paginationselected')
+            document.getElementById('3').classList.remove('paginationselected')
+            document.getElementById('4').classList.remove('paginationselected')
+            document.getElementById('1').classList.remove('paginationselected')
+        } 
+
+        if (categoria === '0') {
+            if (e.currentTarget.id !== 'next') {
+                const query = await axios.get(`https://api.themoviedb.org/3/discover/movie?api_key=86ff22163d48cfd8567997262922738a&language=pt-br&sort_by=popularity.desc&page=${e.currentTarget.id}&include_null_first_air_dates=false&with_watch_monetization_types=flatrate&with_status=0&with_type=0`)
+                setMoviesSearched(query.data.results)
+            } else {
+                setpage(page + 1)
+                const query = await axios.get(`https://api.themoviedb.org/3/discover/movie?api_key=86ff22163d48cfd8567997262922738a&language=pt-br&sort_by=popularity.desc&page=${page}&include_null_first_air_dates=false&with_watch_monetization_types=flatrate&with_status=0&with_type=0`)
+                setMoviesSearched(query.data.results)
+            }
+        } else {
+            if (e.currentTarget.id !== 'next') {
+                const query = await axios.get(`https://api.themoviedb.org/3/discover/movie?api_key=86ff22163d48cfd8567997262922738a&language=en-US&sort_by=${ordernar}&page=${e.currentTarget.id}&timezone=America%2FNew_York&with_genres=${categoria}&include_null_first_air_dates=false&with_watch_monetization_types=flatrate&with_status=0&with_type=0`)
+                setMoviesSearched(query.data.results)
+            } else {
+                setpage(page + 1)
+                const query = await axios.get(`https://api.themoviedb.org/3/discover/movie?api_key=86ff22163d48cfd8567997262922738a&language=en-US&sort_by=${ordernar}&page=${page}&timezone=America%2FNew_York&with_genres=${categoria}&include_null_first_air_dates=false&with_watch_monetization_types=flatrate&with_status=0&with_type=0`)
+                setMoviesSearched(query.data.results)
+            }
+
+        }
+
+    }
+
 
 
     return (
         <>
             <Head>
-                <title>SamFlix</title>
+                <title>SamFlix - Filmes</title>
                 <meta name="description" content="Generated by create next app" />
                 <link rel="icon" href="/favicon.ico" />
                 <link rel="stylesheet" type="text/css" charset="UTF-8" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css" />
@@ -164,12 +231,12 @@ export default function filmes({ listaFilms, topRated }) {
                                         <span className={styles.spanpesquisesearch}>CATEGORIA</span>
                                         <form id='formselect'>
                                             <select name="" id="select" onChange={(e) => { setCategoria(e.target.value) }}>
-                                                <option value="todas">Todas</option>
-                                                <option value="35">Comedia</option>
-                                                <option value="28">Ação</option>
-                                                <option value="18">Drama</option>
-                                                <option value="10749">Romance</option>
-                                                <option value="878">Ficção cientifica</option>
+                                                <option  className='option' value="0">Todas</option>
+                                                <option  className='option' value="35">Comedia</option>
+                                                <option  className='option' value="28">Ação</option>
+                                                <option  className='option' value="18">Drama</option>
+                                                <option  className='option' value="10749">Romance</option>
+                                                <option  className='option' value="878">Ficção cientifica</option>
 
                                             </select>
                                         </form>
@@ -185,9 +252,9 @@ export default function filmes({ listaFilms, topRated }) {
                                     <div className={styles.containerfilmargin}>
                                         <span className={styles.spanpesquisesearch}>ORDENAR POR</span>
                                         <select name="" id="select" onChange={(e) => { setOrdenar(e.target.value) }}>
-                                            <option value="release_date.asc">Ano</option>
-                                            <option value="original_title.asc">Titulo</option>
-                                            <option value="vote_count.asc">Rate</option>
+                                            <option  className='option' value="release_date.desc">Ano</option>
+                                            <option  className='option' value="title.des">Titulo</option>
+                                            <option  className='option' value="vote_count.desc">Rate</option>
 
                                         </select>
                                     </div>
@@ -235,12 +302,12 @@ export default function filmes({ listaFilms, topRated }) {
 
                     </div>
                     <div className={styles.paginationdiv}>
-                        <div className={`${styles.paginationcontentdiv} ${styles.paginationselected}`}>1</div>
-                        <div className={styles.paginationcontentdiv}>2</div>
-                        <div className={styles.paginationcontentdiv}>3</div>
-                        <div className={styles.paginationcontentdiv}>4</div>
-                        <div className={styles.paginationcontentdiv}>5</div>
-                        <div style={{ padding: '30px' }} className={styles.paginationcontentdiv}>Próxima</div>
+                        <div  id='1' onClick={paginacoes} className={`${styles.paginationcontentdiv} paginationselected`}>1</div>
+                        <div  id='2' onClick={paginacoes} className={styles.paginationcontentdiv}>2</div>
+                        <div  id='3' onClick={paginacoes} className={styles.paginationcontentdiv}>3</div>
+                        <div  id='4' onClick={paginacoes} className={styles.paginationcontentdiv}>4</div>
+                        <div  id='5' onClick={paginacoes} className={styles.paginationcontentdiv}>5</div>
+                        <div  id='6' onClick={paginacoes} style={{ padding: '30px' }} className={styles.paginationcontentdiv}>Próxima</div>
 
                     </div>
                     <Footer className={styles.footerfs} />
@@ -253,7 +320,7 @@ export default function filmes({ listaFilms, topRated }) {
 
 export async function getServerSideProps() {
     const filmesNow = await axios.get(`https://api.themoviedb.org/3/movie/now_playing?api_key=86ff22163d48cfd8567997262922738a&language=pt-br&page=1`)
-    const toprated = await axios.get(`https://api.themoviedb.org/3/movie/top_rated?api_key=86ff22163d48cfd8567997262922738a&language=pt-br&page=1`)
+    const toprated = await axios.get(`https://api.themoviedb.org/3/movie/popular?api_key=86ff22163d48cfd8567997262922738a&language=en-US&page=1`)
     return {
         props: {
             listaFilms: filmesNow.data.results,

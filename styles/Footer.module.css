@@ -11,7 +11,18 @@
   padding-bottom: 100px;
 
 }
-
+.footersobre{
+  margin-top: 0px;
+  width: 90%;
+  height: auto;
+  /* background-color: red; */
+  display: flex;
+  /* border-top: 1px solid #eaeaea; */
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding-bottom: 0px;
+}
 .footerh3 {
   font-size: 20px;
   margin-top: 50px;

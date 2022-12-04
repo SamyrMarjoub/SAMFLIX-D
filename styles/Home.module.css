@@ -2,13 +2,12 @@
 
 
 .main {
-  min-height: 100vh;
-  padding: 4rem 0;
-  flex: 1;
+  height: auto;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  width: 90%;
 }
 
 .logo {
@@ -194,14 +193,6 @@
   height: auto;
 }
 
-.activebuttonfilter {
-  background: linear-gradient(rgb(24, 27, 31), rgb(24, 27, 31)) padding-box,
-    linear-gradient(to right, var(--blue), #a6cefd) border-box;
-  border-radius: 50em;
-  border: 2px solid transparent;
-
-}
-
 .buttonfilter:hover {
   background: linear-gradient(rgb(40, 46, 52), rgb(40, 46, 52)) padding-box,
   linear-gradient(to right, var(--blue), #a6cefd) border-box;
@@ -256,4 +247,41 @@
 
 .bodydiviflmes2 {
   margin-top: 100px;
+}
+.containerfooter{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh;
+}
+.whitebackgroundiv{
+  width: 100%;
+  background-color: white;
+  height: 350px;
+  border-radius: 20px;
+  align-items: center;
+  display: flex;
+  margin-top: 20px;
+  justify-content: center;
+}
+.container100{
+  width: 90%;
+  display: flex;
+  justify-content: center;
+}
+.whitebackgroundivcontainer{
+  width: 95%;
+  height: 85%;
+  color: black;
+}
+.whitebackgroundivcontainer p{
+  margin-top: 10px;
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 25px;
+  color: #626C75;
+}
+.estiloexperimental{
+  padding-bottom: 0px;
 }

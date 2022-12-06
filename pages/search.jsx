@@ -4,6 +4,7 @@ import Header from '../components/headerStatic'
 import { FaSearch, FaStar } from 'react-icons/fa'
 import Footer from '../components/FooterFilmSerie'
 import Link from 'next/link'
+import Head from 'next/head'
 export default function search() {
 
     const [search, setSearch] = useState('')

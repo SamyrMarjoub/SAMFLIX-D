@@ -1,9 +1,10 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import styles from '../styles/Header.module.css'
 import { FaSearch, FaUser } from 'react-icons/fa'
 import Link from 'next/link'
 
 export default function header() {
+    const [menuOpen, setMenuOpen] = useState(false)
 
     useEffect(() => {
         paginacaologica()
@@ -40,7 +41,17 @@ export default function header() {
         }
         console.log(pagina)
     }
+    function MenuMobile() {
+        const menuBtn = document.querySelector('.menu-btn');
+            if (!menuOpen) {
+                menuBtn.classList.add('open');
+                setMenuOpen(true)
+            } else {
+                menuBtn.classList.remove('open');
+                setMenuOpen(false)
 
+            }
+    }
     return (
         <div className={styles.headerdiv}>
             <div className={styles.headercontainer}>
@@ -53,6 +64,9 @@ export default function header() {
                         <li className={`${styles.li} sobre`}><Link href={'/sobre'}>Sobre</Link> </li>
 
                     </ul>
+                    <div className="menu-btn" onClick={MenuMobile}>
+                        <div className="menu-btn__burger"></div>
+                    </div>
                 </div>
                 <div className={styles.headercontainerf2}>
                     <Link href={'/search'}>

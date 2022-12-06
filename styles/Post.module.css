@@ -20,7 +20,7 @@
 }
 
 .posterheadflex1 {
-    width: 15%;
+    /* width: 15%; */
     /* background-color: royalblue; */
     height: 100%;
 }
@@ -286,7 +286,32 @@
     flex-direction: column;
     /* background-color: red; */
     justify-content: center;
+    align-items: center;
 
+}
+
+.divcommombtn {
+    background-color: var(--gray);
+    height: 50%;
+    width: 90%;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    /* position: relative; */
+    font-size: 13px;
+    justify-content: center;
+}
+
+.divspoilerbtn {
+    background-color: var(--gray);
+    width: 90%;
+    border-radius: 20px;
+    height: 50%;
+    justify-content: center;
+    /* position: relative; */
+    display: flex;
+    align-items: center;
+    font-size: 13px;
 }
 
 .textarea {
@@ -296,18 +321,16 @@
     border: none;
     resize: none;
     background-color: var(--gray);
+    /* text-align: center; */
+    padding: 20px;
 }
+
 
 .commentsvg {
-    left: 18px;
-    position: absolute;
-    color: gray;
-    margin-right: 20px;
-    font-size: 18px;
-}
 
-.buttontext {
-    margin-left: 25px;
+    color: gray;
+    margin-right: 10px;
+    font-size: 18px;
 }
 
 .commentflex2 button {
@@ -582,7 +605,7 @@
 .filmseriecontainer {
     width: 90%;
     /* background-color: red; */
-    height: 300px;
+    height: auto;
 }
 
 .h3filmserie {
@@ -732,37 +755,43 @@
     width: 70%;
     display: flex;
 }
-.header50top{
+
+.header50top {
     height: 100%;
     display: flex;
     justify-content: center;
     width: 100%;
 }
-.containerfilmargin{
+
+.containerfilmargin {
     width: 80%;
-/* background-color: blue; */
-height: 100%;
-display: flex;
-flex-direction: column;
-justify-content: space-between;
+    /* background-color: blue; */
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 
 }
-.containerfilmargin2{
+
+.containerfilmargin2 {
     align-items: center;
     justify-content: center;
 }
-.filtersvg{
+
+.filtersvg {
     font-size: 25px;
 }
-.filterdivflexsvg{
+
+.filterdivflexsvg {
     width: 100%;
     height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
 }
-.gridfilmserie{
-    grid-template-columns: repeat(7,1fr);
+
+.gridfilmserie {
+    grid-template-columns: repeat(7, 1fr);
     width: 100%;
     height: auto;
     /* row-gap: 20px; */
@@ -770,27 +799,31 @@ justify-content: space-between;
     /* grid-template-rows: 150px; */
     gap: 15px;
 }
-.griddiv{
+
+.griddiv {
     background-color: red;
     height: 350px;
     background-size: cover;
     background-position: center center;
-border-radius: 20px;
-transition: 0.2s;
+    border-radius: 20px;
+    transition: 0.2s;
 }
-.griddiv:hover{
-transform: scale(1.05);
+
+.griddiv:hover {
+    transform: scale(1.05);
 }
-.paginationdiv{
+
+.paginationdiv {
     width: 100%;
-    height:150px;
+    height: 150px;
     background-color: black;
     display: flex;
     justify-content: center;
     align-items: center;
     margin-top: 30px;
 }
-.paginationcontentdiv{
+
+.paginationcontentdiv {
     min-width: 60px;
     height: 60px;
     border-radius: 20px;
@@ -805,16 +838,232 @@ transform: scale(1.05);
     transition: 0.2s all;
     cursor: pointer;
 }
-.paginationcontentdiv:hover{
+
+.paginationcontentdiv:hover {
     background-color: #383c47;
 }
 
-.footerfs{
+.footerfs {
     width: 100% !important;
 }
-.cntn{
+
+.cntn {
     margin-top: 30px;
 }
-.option{
+
+.option {
     height: 50px;
 }
+.mobilesocialcontainer{
+    display: none;
+}
+
+@media screen and (max-width:1500px) {
+
+    .flex2cp,
+    .flex1cp {
+        width: 50%;
+    }
+
+    .divcommombtn span {
+        font-size: 10px;
+    }
+
+    .commentsvg {
+        font-size: 15px;
+    }
+
+    .divspoilerbtn span {
+        font-size: 10px;
+    }
+}
+
+@media screen and (max-width:1400px) {
+    .posterheadflex1 {
+        display: none;
+    }
+
+    .posterheadflex2 {
+        width: 100%;
+    }
+
+    .posterheadflexC {
+        margin: 0;
+        width: 100%;
+    }
+.posterheadflex{
+    margin-top: 70px;
+}
+    .backdrop {
+        display: none;
+    }
+
+    .firstdv {
+        width: 100%;
+        justify-content: center;
+        display: flex;
+        align-items: center
+
+    }
+    .h1Idioma{
+        margin: 0;
+        text-align: center;
+        width: 90%;
+        font-size: 65px;
+    }
+    .divbuttonidiom{
+        margin: 0;
+        width: 100%;
+        display: flex;
+        margin-top: 30px;
+        justify-content: center;
+    }
+    .divchooseDUB{
+        height: 1200px;
+    }
+    .divbuttonidiom button{
+        width: 50%;
+    }
+}
+@media screen and (max-width:1200px) {
+ .commentepublicrate{
+    flex-direction: column;
+ }   
+ .flex1cp, .flex2cp{
+    width: 100%;
+ }
+ .flex1cp{
+    padding-bottom: 200px;
+ }
+}
+
+@media screen and (max-width:750px) {
+    .posterheadflexC{
+        text-align: center !important;
+    }
+    .description p{
+        max-width: 100%;
+        width: auto;
+    }
+    .buttonsPost{
+        justify-content: center;
+    }
+    .spangenero{
+        display: none;
+    }
+    .filmdata{
+        display: flex;
+        justify-content: center;
+    }
+    
+}
+
+@media screen and (max-width:550px) {
+    .movieTitle{
+        font-size: 40px;
+    }
+    .description p{
+        font-size: 13px;
+        font-weight: 300;
+        line-height: unset;
+    }
+    .buttonsPost{
+        flex-direction: column;
+        height: auto;
+        width: 100%;
+    }
+    .btn1{
+        margin-top: 30px;
+    }
+    .btn1, .btn2{
+        height: 40px;
+        width: 80%;
+        margin-bottom: 10px;
+    }
+    .buttonsPost button{
+        justify-content: center;
+    }
+   .btn1 .svgimgbw{
+        margin-right: 30px;
+    }
+    .btn2 .svgimgbw{
+        margin-right: 30px;
+    }
+    .btn3, .btn4{
+        display: none !important;
+    }
+    .mobilesocialcontainer{
+        width: 80%;
+        /* background-color: red; */
+        height: auto;
+        display: flex;
+        justify-content: center;
+    }
+    .containersocialm{
+        width: 60px;
+        height: 60px;
+        background-color: rgba(113, 125, 138, .2);
+        margin: 10px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 40px;
+    }
+    .divbuttonidiom button{
+        margin: 0;
+    }
+    .mobilemargin{
+        margin-right: 20px !important;
+    }
+    .commentflex1{
+        width: 60%;
+    }
+    .commentflex2{
+        width: 40%;
+    }
+    .spancomentarios{
+        font-size: 30px;
+    }
+    .similardiv{
+        width: 90%;
+    }
+}
+@media screen and (max-width:430px) {
+    .h1Idioma{
+        font-size: 50px;
+    }
+    .commentflex{
+        flex-direction: column;
+    }
+    .commentflex1{
+        width: 100%;
+    }
+    .commentflex2{
+        width: 100%;
+        flex-direction: row;
+        margin-top: 10px;
+    }
+    .divcommombtn, .divspoilerbtn{
+        height: 45px;
+    }
+    .divcommombtn{
+        margin: 0 !important;
+        width: 60%;
+        margin-right: 20px !important;
+    }
+    .divspoilerbtn{
+        width: 40%;
+    }
+    .textarea{
+        height: 70px;
+    }
+
+  }
+  @media screen and (max-width:380px) {
+    .datespan, .spantrailer{
+        display: none;
+    }
+    .starspandate{
+        margin-right: 0 !important;
+    }
+  }

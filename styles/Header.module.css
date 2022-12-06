@@ -119,3 +119,35 @@
     width: auto;
     margin-right: 10px;
 }
+@media screen and (max-width:950px) {
+    .ul{
+        display: none;
+    }
+    .headercontainerf1{
+        display: flex;
+        flex-direction: row-reverse;
+        justify-content: space-between;
+    }
+    .headerlogo{
+        margin-right: 0;
+        font-size: 25px;
+    }
+    .iconsearch{
+        margin: 0;
+    }
+}
+
+@media screen and (max-width:500px) {
+    .headercontainerf2{
+        display: none;
+    }
+    .headercontainerf1{
+        width: 100%;
+        justify-content: center;
+    }
+    .headerdiv2{
+        height: 60px !important;
+    }
+    
+    
+}

@@ -23,27 +23,46 @@ export default function MovieItem({ info, RecommendMovie, videoFilm }) {
             initialSlide: 0,
             responsive: [
                 {
-                    breakpoint: 1300,
+                    breakpoint: 1350,
                     settings: {
-                        slidesToShow: 3,
-                        slidesToScroll: 3,
+                        slidesToShow: 5,
+                        slidesToScroll: 1,
                         infinite: true,
                         dots: true
                     }
                 },
                 {
-                    breakpoint: 950,
+                    breakpoint: 1000,
                     settings: {
-                        slidesToShow: 2,
+                        slidesToShow: 4,
                         slidesToScroll: 2,
                         initialSlide: 2
                     }
                 },
                 {
-                    breakpoint: 550,
+                    breakpoint: 800,
+                    settings: {
+                        slidesToShow: 3,
+                        slidesToScroll: 1,
+                        initialSlide: 1
+
+                    }
+                },
+                {
+                    breakpoint: 500,
+                    settings: {
+                        slidesToShow: 2,
+                        slidesToScroll: 1,
+                        initialSlide: 1
+
+                    }
+                },
+                {
+                    breakpoint: 400,
                     settings: {
                         slidesToShow: 1,
-                        slidesToScroll: 1
+                        slidesToScroll: 1,
+                        initialSlide: 1
                     }
                 }
             ]
@@ -62,8 +81,8 @@ export default function MovieItem({ info, RecommendMovie, videoFilm }) {
         paginacao()
         console.log(info.id)
     }, [])
-    function paginacao(){
-       localStorage.setItem('pagina', 1)
+    function paginacao() {
+        localStorage.setItem('pagina', 1)
 
     }
 
@@ -122,9 +141,9 @@ export default function MovieItem({ info, RecommendMovie, videoFilm }) {
                                 </h1>
                                 <div className={styles.filmdata}>
                                     <span>2022</span>
-                                    <span ><FaRegClock className={styles.duration} />  2h, 5min</span>
-                                    <span><span className={styles.starspan}> <FaStar className={styles.starImg} /> </span> 7.2/ <span className={styles.deiz}>10</span> </span>
-                                    <span>Genero: {info.genres.map((e) => { return (<span id={e.id} key={e.id} className={styles.generos}>{e.name}</span>) })}</span>
+                                    <span className={styles.datespan} ><FaRegClock className={styles.duration} />  2h, 5min</span>
+                                    <span className={styles.starspandate}><span className={styles.starspan}> <FaStar className={styles.starImg} /> </span> 7.2/ <span className={styles.deiz}>10</span> </span>
+                                    <span className={styles.spangenero}>Genero: {info.genres.map((e) => { return (<span id={e.id} key={e.id} className={styles.generos}>{e.name}</span>) })}</span>
                                     <span className={styles.spantrailer}>Trailer <FaAngleRight /> </span>
                                 </div>
                                 <div className={styles.description}>
@@ -135,6 +154,11 @@ export default function MovieItem({ info, RecommendMovie, videoFilm }) {
                                     <button className={styles.btn2}> <FaClock className={styles.svgimgbw} /> VER DEPOIS</button>
                                     <button className={styles.btn3}> <FaFacebookF className={styles.svgimgbw} /> </button>
                                     <button className={styles.btn4}>  <FaTwitter className={styles.svgimgbw} /> </button>
+                                    <div className={styles.mobilesocialcontainer}>
+                                        <div className={styles.containersocialm}> <FaFacebookF/> </div>
+                                        <div className={styles.containersocialm}> <FaTwitter/> </div>
+
+                                    </div>
 
                                 </div>
                                 {/* <div className={styles.mainbutton}> <button className={styles.buttonLarge}>Ver página do filme!</button> </div> */}
@@ -147,7 +171,7 @@ export default function MovieItem({ info, RecommendMovie, videoFilm }) {
                         <div className={styles.firstdv}>
                             <h1 className={styles.h1Idioma}>ESCOLHA UM IDIOMA</h1>
                             <div className={styles.divbuttonidiom}>
-                                <button>PORTUGUÊS</button>
+                                <button className={styles.mobilemargin}>PORTUGUÊS</button>
                                 <button>INGLES</button>
                             </div>
 
@@ -155,12 +179,15 @@ export default function MovieItem({ info, RecommendMovie, videoFilm }) {
                         <div className={styles.backdrop}>
                             {/* <button>Assistir Trailer</button> */}
                             <div className={styles.last}>
-                              
+
                                 <svg className={styles.specialsvgback} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 600"><path d="M900 324.5c-32.2-29.1-64.3-58.1-105.6-69.5-41.3-11.4-91.7-5.2-123.9-25.5-32.1-20.4-46-67.4-58.8-110.1C599 76.7 587.2 38.4 575.5 0H900Z" fill="#001833"></path><path d="M900 216.3c-21.4-19.3-42.9-38.7-70.4-46.3-27.5-7.6-61.1-3.4-82.6-17-21.4-13.6-30.6-44.9-39.2-73.4-8.5-28.5-16.3-54-24.1-79.6H900Z" fill="#003e80"></path><path d="M900 108.2c-10.7-9.7-21.4-19.4-35.2-23.2-13.8-3.8-30.6-1.7-41.3-8.5-10.7-6.8-15.3-22.5-19.6-36.7-4.2-14.2-8.2-27-12.1-39.8H900Z" fill="#007bfffd"></path></svg>
 
                             </div>
                         </div>
 
+                    </div>
+                    <div className={styles.divrecommendedseries}>
+                        <span className={styles.spanrecommendseries}>Filmes Recomendados</span>
                     </div>
                     <div className={styles.similardiv}>
                         <Slider {...settings}>
@@ -189,16 +216,7 @@ export default function MovieItem({ info, RecommendMovie, videoFilm }) {
 
                                 )
                             })}
-                            {/* <div className='teste'>a</div>
-                            <div className='teste'>a</div>
-                            <div className='teste'>a</div>
-                            <div className='teste'>a</div>
-                            <div className='teste'>a</div>
-                            <div className='teste'>a</div>
-                            <div className='teste'>a</div>
-                            <div className='teste'>a</div>
-                            <div className='teste'>a</div>
-                            <div className='teste'>a</div> */}
+                           
 
                         </Slider>
                     </div>
@@ -208,13 +226,18 @@ export default function MovieItem({ info, RecommendMovie, videoFilm }) {
                             <div className={styles.margincommentdv}>
                                 <div className={styles.commentflex}>
                                     <div className={styles.commentflex1}>
-                                        <textarea className={styles.textarea}>
+                                        <textarea placeholder='Escreva o seu comentário...' className={styles.textarea}>
 
                                         </textarea>
                                     </div>
                                     <div className={styles.commentflex2}>
-                                        <button className={styles.commntbutton} style={{ marginBottom: '10px' }}> <FaCommentAlt className={styles.commentsvg} /> <span className={styles.buttontext}>COMENTAR</span> </button>
-                                        <button className={styles.spoilerbtn}> <FaCircle style={{ marginTop: '-2px' }} className={styles.commentsvg} /> <span className={styles.buttontext}> É SPOILER?</span></button>
+                                        <div className={styles.divcommombtn} style={{ marginBottom: '10px' }}>
+                                            <FaCommentAlt className={styles.commentsvg} /> <span className={styles.buttontext}>COMENTAR</span>
+                                        </div>
+                                        <div className={styles.divspoilerbtn}>
+                                            <FaCircle className={styles.commentsvg} /> <span className={styles.buttontext}> É SPOILER?</span>
+                                        </div>
+
 
                                     </div>
 
@@ -320,7 +343,7 @@ export async function getServerSideProps(context) {
     const idFilm = resposta.data
     const RecoMovie = await axios.get(`https://api.themoviedb.org/3/movie/${idFilm.id}/similar?api_key=86ff22163d48cfd8567997262922738a&language=pt-br&page=1`)
     const video = await axios.get(`https://api.themoviedb.org/3/movie/${id}/videos?api_key=86ff22163d48cfd8567997262922738a&language=en-US`)
- 
+
     return {
         props: {
             info: resposta.data,

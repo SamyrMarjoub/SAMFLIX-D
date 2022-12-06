@@ -195,7 +195,7 @@
 
 .buttonfilter:hover {
   background: linear-gradient(rgb(40, 46, 52), rgb(40, 46, 52)) padding-box,
-  linear-gradient(to right, var(--blue), #a6cefd) border-box;
+    linear-gradient(to right, var(--blue), #a6cefd) border-box;
   color: white;
 
 
@@ -248,14 +248,16 @@
 .bodydiviflmes2 {
   margin-top: 100px;
 }
-.containerfooter{
+
+.containerfooter {
   width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   height: 100vh;
 }
-.whitebackgroundiv{
+
+.whitebackgroundiv {
   width: 100%;
   background-color: white;
   height: 350px;
@@ -265,23 +267,180 @@
   margin-top: 20px;
   justify-content: center;
 }
-.container100{
+
+.container100 {
   width: 90%;
   display: flex;
   justify-content: center;
 }
-.whitebackgroundivcontainer{
+
+.whitebackgroundivcontainer {
   width: 95%;
   height: 85%;
   color: black;
 }
-.whitebackgroundivcontainer p{
+
+.whitebackgroundivcontainer p {
   margin-top: 10px;
   font-weight: 300;
   font-size: 16px;
   line-height: 25px;
   color: #626C75;
 }
-.estiloexperimental{
+
+.estiloexperimental {
   padding-bottom: 0px;
+}
+
+.hfdvf2 {
+  display: flex;
+}
+.bassistirfilmemobile{
+  width: 80%;
+  height: 40px;
+  margin-top: 20px;
+  border-radius: 20px;
+  background-color: var(--blue);
+  border: none;
+  text-transform: uppercase;
+  font-weight: 900;
+  letter-spacing: 1.5px;
+}
+
+@media screen and (max-width:1200px) {
+  .headerfilterdivc {
+    flex-direction: column;
+  }
+
+  .hfdvf1 {
+    margin-bottom: 20px;
+  }
+
+  .titlename {
+    font-size: 12px;
+  }
+
+}
+
+@media screen and (max-width:750px) {
+  .headerfilterdivc button {
+    width: 90%;
+    margin: 0;
+    padding: 0px;
+  }
+
+  .hfdvfbt1,
+  .hfdvfbt2 {
+    align-items: center;
+    flex-direction: column;
+    display: flex;
+    width: 90%;
+  }
+
+  .hfdvf1,
+  .hfdvf2 {
+    width: 90%;
+  }
+
+  .oneb,
+  .threeb {
+    margin-top: 15px !important;
+  }
+
+  .h2 {
+    text-align: center;
+  }
+
+  .titlename {
+    margin-top: -35px;
+    position: absolute;
+  }
+
+  .filmslidedata {
+    position: relative;
+  }
+ 
+}
+
+@media screen and (max-width:550px) {
+  .bodydivfilmescontainer{
+    width: 80%;
+  }
+}
+@media screen and (max-width:500px) {
+  .bassistirfilme{
+    z-index: 222;
+  }
+  .divmainsbuton {
+   display: none;
+  }
+  .containertitle{
+    width: 100%;
+    height: 90%;
+    margin-top: 80px;
+  }
+  .MainTitle{
+    display: none;
+  }
+  .spanlancamentos{
+    font-size: 17px;
+color: #ffffff !important;
+margin-top: 40px;
+z-index: 101;
+text-transform: uppercase;
+letter-spacing: 4px;
+  }
+  .spannovidades{
+font-size: 17px;
+text-transform: uppercase;
+letter-spacing: 3px;
+margin-bottom: 10px;
+  }
+  .mobilespantitle{
+    font-size: 25px;
+  }
+  .divcontainerspansmb{
+    width: 100%;
+    height: 35%;
+   z-index: 100;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+    background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.423), rgb(0, 0, 0));
+
+  }
+  .bassistirfilme{
+   display: none;
+
+  }
+  /* falta o hover */
+  .imgplay{
+    position: absolute;
+    font-size: 35px;
+    left: 20%  ;
+    top: 8px;
+  }
+  .spanasstir{
+font-size: 20px;
+margin-top: -4px;
+right: 25%;
+  }
+}
+@media screen and (max-width:450px) {
+  
+
+  .bmaistarde {
+    display: none;
+  }
+
+  .bassistirfilme {
+    width: 180px !important;
+
+  }
+}
+
+@media screen and (max-width:500px) {
+  .bodydiviflmes2 {
+    margin-top: 30px;
+  }
 }

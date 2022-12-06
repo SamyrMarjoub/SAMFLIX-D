@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styles from '../styles/Header.module.css'
 import { FaSearch, FaUser } from 'react-icons/fa'
 import Link from 'next/link'
@@ -10,7 +10,7 @@ export default function header() {
     useEffect(() => {
         paginacaologica()
     }, [])
-
+    const [menuOpen, setMenuOpen] = useState(false)
     function paginacaologica() {
         const pagina = localStorage.getItem('pagina')
 
@@ -18,7 +18,7 @@ export default function header() {
         const filme = document.querySelector('.filme')
         const series = document.querySelector('.series')
         const about = document.querySelector('.sobre')
-        
+
         if (pagina === '0') {
             inicio.classList.add('firstli')
             filme.classList.remove('firstli')
@@ -35,7 +35,7 @@ export default function header() {
             filme.classList.remove('firstli')
             about.classList.remove('firstli')
             inicio.classList.remove('firstli')
-        }else if(pagina === '3'){
+        } else if (pagina === '3') {
             series.classList.remove('firstli')
             filme.classList.remove('firstli')
             inicio.classList.remove('firstli')
@@ -44,6 +44,17 @@ export default function header() {
         console.log(pagina)
     }
 
+    function MenuMobile() {
+        const menuBtn = document.querySelector('.menu-btn');
+            if (!menuOpen) {
+                menuBtn.classList.add('open');
+                setMenuOpen(true)
+            } else {
+                menuBtn.classList.remove('open');
+                setMenuOpen(false)
+
+            }
+    }
     return (
         <div className={styles.headerdiv2}>
             <div className={styles.headercontainer2}>
@@ -57,6 +68,9 @@ export default function header() {
 
 
                     </ul>
+                    <div className="menu-btn" onClick={MenuMobile}>
+                        <div className="menu-btn__burger"></div>
+                    </div>
                 </div>
                 <div className={styles.headercontainerf2}>
                     <Link href={'/search'}>

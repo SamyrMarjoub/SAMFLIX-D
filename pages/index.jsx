@@ -28,27 +28,46 @@ export default function Home({ lista, series, popularFilm, nowFilm, filmTopRated
       initialSlide: 0,
       responsive: [
         {
-          breakpoint: 1300,
+          breakpoint: 1350,
           settings: {
-            slidesToShow: 3,
-            slidesToScroll: 3,
+            slidesToShow: 5,
+            slidesToScroll: 1,
             infinite: true,
             dots: true
           }
         },
         {
-          breakpoint: 950,
+          breakpoint: 1000,
           settings: {
-            slidesToShow: 2,
+            slidesToShow: 4,
             slidesToScroll: 2,
             initialSlide: 2
           }
         },
         {
-          breakpoint: 550,
+          breakpoint: 800,
+          settings: {
+            slidesToShow: 3,
+            slidesToScroll: 1,
+            initialSlide: 1
+
+          }
+        },
+        {
+          breakpoint: 500,
+          settings: {
+            slidesToShow: 2,
+            slidesToScroll: 1,
+            initialSlide: 1
+
+          }
+        },
+        {
+          breakpoint: 400,
           settings: {
             slidesToShow: 1,
-            slidesToScroll: 1
+            slidesToScroll: 1,
+            initialSlide: 1
           }
         }
       ]
@@ -60,32 +79,84 @@ export default function Home({ lista, series, popularFilm, nowFilm, filmTopRated
 
   function ImageDinamica() {
     const div = document.querySelector('.maincontainer')
+    const divMobile = document.querySelector('.maindivmobile')
     const url = lista.filter((e, i) => i === 0).map((option, i) => {
       setIdFilm(option.id)
       return `https://image.tmdb.org/t/p/original${option.backdrop_path}`
     })
 
     div.style.backgroundImage = `url(${url})`
+    divMobile.style.backgroundImage = `url(${url})`
 
   }
   function buttonChoose(e) {
     const id = e.currentTarget.id
+    const div1 = document.getElementById('0')
+    const div2 = document.getElementById('1')
+    const div3 = document.getElementById('2')
+    const div4 = document.getElementById('3')
+    const div5 = document.getElementById('4')
+    const div6 = document.getElementById('5')
+    const div7 = document.getElementById('6')
+    const div8 = document.getElementById('7')
+
+
+
     if (id === '0') {
       setFilmEscolhido(0)
+      div1.classList.add('activebuttonfilter')
+      div2.classList.remove('activebuttonfilter')
+      div3.classList.remove('activebuttonfilter')
+      div4.classList.remove('activebuttonfilter')
+
+
     } else if (id === '1') {
       setFilmEscolhido(1)
+      div2.classList.add('activebuttonfilter')
+      div1.classList.remove('activebuttonfilter')
+      div3.classList.remove('activebuttonfilter')
+      div4.classList.remove('activebuttonfilter')
+
     } else if (id === '2') {
       setFilmEscolhido(2)
+      div3.classList.add('activebuttonfilter')
+      div2.classList.remove('activebuttonfilter')
+      div1.classList.remove('activebuttonfilter')
+      div4.classList.remove('activebuttonfilter')
     } else if (id === '3') {
       setFilmEscolhido(3)
+      div4.classList.add('activebuttonfilter')
+      div2.classList.remove('activebuttonfilter')
+      div3.classList.remove('activebuttonfilter')
+      div1.classList.remove('activebuttonfilter')
+
     } else if (id === '4') {
       setSerieEscolhida(4)
+      div5.classList.add('activebuttonfilter')
+      div6.classList.remove('activebuttonfilter')
+      div7.classList.remove('activebuttonfilter')
+      div8.classList.remove('activebuttonfilter')
+
     } else if (id === '5') {
       setSerieEscolhida(5)
+      div6.classList.add('activebuttonfilter')
+      div5.classList.remove('activebuttonfilter')
+      div7.classList.remove('activebuttonfilter')
+      div8.classList.remove('activebuttonfilter')
+
     } else if (id === '6') {
       setSerieEscolhida(6)
+      div7.classList.add('activebuttonfilter')
+      div8.classList.remove('activebuttonfilter')
+      div5.classList.remove('activebuttonfilter')
+      div6.classList.remove('activebuttonfilter')
     } else if (id === '7') {
       setSerieEscolhida(7)
+      div8.classList.add('activebuttonfilter')
+      div5.classList.remove('activebuttonfilter')
+      div6.classList.remove('activebuttonfilter')
+      div7.classList.remove('activebuttonfilter')
+
     }
   }
 
@@ -113,6 +184,23 @@ export default function Home({ lista, series, popularFilm, nowFilm, filmTopRated
               <h1 key={option.id} className={styles.MainTitle}>{option.title}</h1>
             )
           })}
+          <div className='maindivmobile'>
+            <div className={'blackmodalmobile'}></div>
+            <span className={styles.spanlancamentos}>Lançamento</span>
+            <div className={styles.divcontainerspansmb}>
+
+              <span className={styles.spannovidades}>Novidade 2022</span>
+              {lista.filter((e, i) => i === 0).map((option, i) => {
+                return (
+                  <h3 key={option.id} className={styles.mobilespantitle}>{option.title}</h3>
+                )
+              })}
+
+              <button className={styles.bassistirfilme}><Link href={`/movie/${idFilm}`}> <FaPlayCircle className={styles.imgplay} /> <span className={styles.spanasstir}> Assistir Filme</span> </Link></button>
+              <button className={styles.bassistirfilmemobile}><Link href={`/movie/${idFilm}`}> Assistir filme</Link></button>
+            </div>
+
+          </div>
           <div className={styles.divmainsbuton}>
             <Link href={`/movie/${idFilm}`}>  <button className={styles.bassistirfilme}> <FaPlayCircle className={styles.imgplay} /> <span className={styles.spanasstir}> Assistir Filme</span> </button></Link>
             <button className={styles.bmaistarde}> <FaClock className={styles.imgplay} /> <span className={styles.spanmaistarde}>Adicionar a ver depois</span></button>
@@ -125,11 +213,23 @@ export default function Home({ lista, series, popularFilm, nowFilm, filmTopRated
         <div className={styles.filmesdiv1}>
           <div className={styles.headerfilterdiv}>
             <div className={styles.headerfilterdivc}>
-              <h2 className={styles.h2}>Assistir Filmes online</h2>
-              <button id='0' onClick={buttonChoose} className={`${styles.buttonfilter} activebuttonfilter`}>Lançamentos</button>
-              <button id='1' onClick={buttonChoose} className={styles.buttonfilter}>Assistidos agora</button>
-              <button id='2' onClick={buttonChoose} className={styles.buttonfilter}>Mais Populares</button>
-              <button id='3' onClick={buttonChoose} className={styles.buttonfilter}>Mais Avaliados</button>
+              <div className={styles.hfdvf1}>
+                <h2 className={styles.h2}>Assistir Filmes online</h2>
+
+              </div>
+              <div className={styles.hfdvf2}>
+                <div className={styles.hfdvfbt1}>
+                  <button id='0' onClick={buttonChoose} className={`${styles.buttonfilter} activebuttonfilter`}>Lançamentos</button>
+                  <button id='1' onClick={buttonChoose} className={`${styles.buttonfilter} ${styles.oneb}`}>Assistidos agora</button>
+                </div>
+                <div className={styles.hfdvfbt2}>
+                  <button id='2' onClick={buttonChoose} className={styles.buttonfilter}>Mais Populares</button>
+                  <button id='3' onClick={buttonChoose} className={`${styles.buttonfilter} ${styles.threeb}`}>Mais Avaliados</button>
+                </div>
+
+
+              </div>
+
 
             </div>
           </div>
@@ -252,11 +352,22 @@ export default function Home({ lista, series, popularFilm, nowFilm, filmTopRated
           </div>
           <div className={`${styles.bodydivfilmes} ${styles.bodydiviflmes2}`}>
             <div className={styles.headerfilterdivc}>
-              <h2 className={styles.h2}>Assistir Series online</h2>
-              <button onClick={buttonChoose} id='4' className={`${styles.buttonfilter} activebuttonfilter`}>Novos Episodios</button>
-              <button onClick={buttonChoose} id='5' className={styles.buttonfilter}>Novas séries</button>
-              <button onClick={buttonChoose} id='6' className={styles.buttonfilter}>Populares</button>
-              <button onClick={buttonChoose} id='7' className={styles.buttonfilter}>Mais Bem Avaliadas</button>
+              <div className={styles.hfdvf1}>
+                <h2 className={styles.h2}>Assistir Series online</h2>
+              </div>
+              <div className={styles.hfdvf2}>
+                <div className={styles.hfdvfbt1}>
+                  <button id='4' onClick={buttonChoose} className={`${styles.buttonfilter} activebuttonfilter`}>Lançamentos</button>
+                  <button id='5' onClick={buttonChoose} className={`${styles.buttonfilter} ${styles.oneb}`}>Assistidos agora</button>
+                </div>
+                <div className={styles.hfdvfbt2}>
+                  <button id='6' onClick={buttonChoose} className={styles.buttonfilter}>Mais Populares</button>
+                  <button id='7' onClick={buttonChoose} className={`${styles.buttonfilter} ${styles.threeb}`}>Mais Avaliados</button>
+                </div>
+
+
+              </div>
+
 
             </div>
           </div>

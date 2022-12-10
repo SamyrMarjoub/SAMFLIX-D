@@ -2,42 +2,83 @@ import React from 'react'
 import styles from '../styles/Header.module.css'
 import { FaSearch, FaUser } from 'react-icons/fa'
 import Link from 'next/link'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 
 export default function header() {
 
     useEffect(() => {
         paginacaologica()
     }, [])
+    const [menuOpen, setMenuOpen] = useState(false)
 
+    function MenuMobile() {
+        const menuBtn = document.querySelector('.menu-btn');
+        const MenuDiv = document.querySelector('.mblsd')
+        if (!menuOpen) {
+            menuBtn.classList.add('open');
+            MenuDiv.classList.toggle('show_mbl_flex')
+            setMenuOpen(true)
+        } else {
+            MenuDiv.classList.toggle('show_mbl_flex')
+            menuBtn.classList.remove('open');
+            setMenuOpen(false)
+
+        }
+    }
     function paginacaologica() {
         const pagina = localStorage.getItem('pagina')
-
-        const inicio = document.querySelector('.inicio')
-        const filme = document.querySelector('.filme')
-        const series = document.querySelector('.series')
+        const inicio = document.querySelectorAll('.inicio')
+        const filme = document.querySelectorAll('.filme')
+        const series = document.querySelectorAll('.series')
+        const about = document.querySelectorAll('.sobre')
         const search = document.querySelector('.search')
-        // const about = document.querySelector('.')
+
         if (pagina === '0') {
-            inicio.classList.add('firstli')
-            filme.classList.remove('firstli')
-            series.classList.remove('firstli')
+            for (let i = 0; i < inicio.length; i++) {
+                inicio[i].classList.add('firstli')
+                filme[i].classList.remove('firstli')
+                series[i].classList.remove('firstli')
+                about[i].classList.remove('firstli')
+
+            }
+            search.classList.remove('firstli')
+
+
         } else if (pagina === '1') {
-            filme.classList.add('firstli')
-            inicio.classList.remove('firstli')
-            series.classList.remove('firstli')
+            for (let i = 0; i < inicio.length; i++) {
+                filme[i].classList.add('firstli')
+                inicio[i].classList.remove('firstli')
+                about[i].classList.remove('firstli')
+                series[i].classList.remove('firstli')
+            }
+            search.classList.remove('firstli')
         } else if (pagina === '2') {
-            series.classList.add('firstli')
-            filme.classList.remove('firstli')
-            inicio.classList.remove('firstli')
-        }else if(pagina === '4'){
-            series.classList.remove('firstli')
-            filme.classList.remove('firstli')
-            inicio.classList.remove('firstli')
-            // search.classList.add('firstli')
-            
+            for (let i = 0; i < inicio.length; i++) {
+                inicio[i].classList.remove('firstli')
+                filme[i].classList.remove('firstli')
+                series[i].classList.add('firstli')
+                about[i].classList.remove('firstli')
+            }
+            search.classList.remove('firstli')
+        } else if (pagina === '3') {
+            for (let i = 0; i < inicio.length; i++) {
+                series[i].classList.remove('firstli')
+                filme[i].classList.remove('firstli')
+                inicio[i].classList.remove('firstli')
+                about[i].classList.add('firstli')
+
+            }
+        } else if (pagina === '4') {
+            for (let i = 0; i < inicio.length; i++) {
+                inicio[i].classList.remove('firstli')
+                filme[i].classList.remove('firstli')
+                about[i].classList.remove('firstli')
+                series[i].classList.remove('firstli')
+
+            }
+            search.classList.add('firstli')
         }
-        console.log(pagina)
+
     }
 
     return (
@@ -49,10 +90,28 @@ export default function header() {
                         <li className={`${styles.li} inicio`}>Inicio</li>
                         <li className={`${styles.li} filme`}><Link href='/filmes'>Filmes</Link> </li>
                         <li className={`${styles.li} series`}><Link href={'/series'}>Series</Link> </li>
-                        <li className={`${styles.li} animes`}><Link href={'/sobre'}>Sobre</Link> </li>
+                        <li className={`${styles.li} sobre`}><Link href={'/sobre'}>Sobre</Link> </li>
 
 
                     </ul>
+                    <div className="menu-btn" onClick={MenuMobile}>
+                        <div className="menu-btn__burger"></div>
+                    </div>
+                    <div className={`menu_mobile mblsd`}>
+                        <div className={styles.menu_mobile_container}>
+                            <Link href={'/'}><div className={`${styles.mnbled} inicio`}>INICIO</div></Link>
+                            <Link href='/filmes'><div className={`${styles.mnbled} filme`}>FILMES</div></Link>
+                            <Link href={'/series'}><div className={`${styles.mnbled} series`}>SÉRIES</div></Link>
+                            <Link href={'/sobre'}> <div className={`${styles.mnbled} sobre`}>SOBRE</div></Link>
+                            <Link href={'/search'}>
+                                <div className={`${styles.mnbled} search`}>PESQUISAR</div>
+
+                            </Link>
+
+                        </div>
+
+
+                    </div>
                 </div>
                 <div className={styles.headercontainerf2}>
                     <Link href={'/search'}>

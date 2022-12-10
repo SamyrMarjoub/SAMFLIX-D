@@ -260,7 +260,7 @@
 .whitebackgroundiv {
   width: 100%;
   background-color: white;
-  height: 350px;
+  min-height: 350px;
   border-radius: 20px;
   align-items: center;
   display: flex;
@@ -276,7 +276,7 @@
 
 .whitebackgroundivcontainer {
   width: 95%;
-  height: 85%;
+  height: auto;
   color: black;
 }
 

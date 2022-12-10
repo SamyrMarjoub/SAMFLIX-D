@@ -7,9 +7,10 @@
     border-bottom: 1px solid rgba(128, 128, 128, 0.27);
     color: white;
     /* position: absolute; */
-  
+
 
 }
+
 .headerdiv2 {
     width: 100%;
     background-color: transparent;
@@ -21,7 +22,8 @@
     position: absolute;
 
 }
-.headerdiv3{
+
+.headerdiv3 {
     width: 100%;
     background-color: transparent;
     height: 90px !important;
@@ -31,6 +33,7 @@
     border-bottom: 1px solid rgba(128, 128, 128, 0.27);
     position: static;
 }
+
 .headerdiv h1 {
     color: white;
 }
@@ -41,7 +44,8 @@
     display: flex;
     height: 100%;
 }
-.headercontainer2{
+
+.headercontainer2 {
     width: 90%;
     margin: auto;
     display: flex;
@@ -119,35 +123,68 @@
     width: auto;
     margin-right: 10px;
 }
+
 @media screen and (max-width:950px) {
-    .ul{
+    .ul {
         display: none;
     }
-    .headercontainerf1{
+
+    .headercontainerf1 {
         display: flex;
-        flex-direction: row-reverse;
+        flex-direction: row;
         justify-content: space-between;
+        width: 100%;
+        position: relative;
     }
-    .headerlogo{
+
+    .headerlogo {
         margin-right: 0;
         font-size: 25px;
     }
-    .iconsearch{
+
+    .iconsearch {
         margin: 0;
+    }
+
+    .headercontainerf2 {
+        display: none;
+    }
+    
+    
+    .mnbled{
+        height: 20%;
+        width: 100%;
+        border: 1px solid transparent;
+        font-size: 25px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        transition: 0.2s all;
+    }
+    .mnbled:hover{
+        border-bottom: 1px solid var(--blue);
+        /* background-color: rgba(50, 50, 50, 0.436); */
+    }
+    .menu_mobile_container{
+        width: 100%;
+        height: 90%;
     }
 }
 
 @media screen and (max-width:500px) {
-    .headercontainerf2{
+    .headercontainerf2 {
         display: none;
     }
-    .headercontainerf1{
+
+    .headercontainerf1 {
         width: 100%;
         justify-content: center;
     }
-    .headerdiv2{
+
+    .headerdiv2 {
         height: 60px !important;
     }
-    
-    
+
+
 }

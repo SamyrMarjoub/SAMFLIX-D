@@ -150,7 +150,7 @@ export default function MovieItem({ info, RecommendMovie, videoFilm }) {
                                     <p>{info.overview}</p>
                                 </div>
                                 <div className={styles.buttonsPost}>
-                                    <button className={styles.btn1}> <FaRegHandPeace className={styles.svgimgbw} /> CURTIR</button>
+                                    <button className={`${styles.btn1} ${styles.btn1film}`}> <FaRegHandPeace className={styles.svgimgbw} /> CURTIR</button>
                                     <button className={styles.btn2}> <FaClock className={styles.svgimgbw} /> VER DEPOIS</button>
                                     <button className={styles.btn3}> <FaFacebookF className={styles.svgimgbw} /> </button>
                                     <button className={styles.btn4}>  <FaTwitter className={styles.svgimgbw} /> </button>

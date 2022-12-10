@@ -17,31 +17,50 @@ export default function Series({ info, RecoSerie }) {
             infinite: true,
             speed: 500,
             slidesToShow: 7,
-            slidesToScroll: 2,
+            slidesToScroll: 1,
             initialSlide: 0,
             responsive: [
                 {
-                    breakpoint: 1300,
+                    breakpoint: 1350,
                     settings: {
-                        slidesToShow: 3,
-                        slidesToScroll: 3,
+                        slidesToShow: 5,
+                        slidesToScroll: 1,
                         infinite: true,
                         dots: true
                     }
                 },
                 {
-                    breakpoint: 950,
+                    breakpoint: 1000,
                     settings: {
-                        slidesToShow: 2,
+                        slidesToShow: 4,
                         slidesToScroll: 2,
                         initialSlide: 2
                     }
                 },
                 {
-                    breakpoint: 550,
+                    breakpoint: 800,
+                    settings: {
+                        slidesToShow: 3,
+                        slidesToScroll: 1,
+                        initialSlide: 1
+
+                    }
+                },
+                {
+                    breakpoint: 500,
+                    settings: {
+                        slidesToShow: 2,
+                        slidesToScroll: 1,
+                        initialSlide: 1
+
+                    }
+                },
+                {
+                    breakpoint: 400,
                     settings: {
                         slidesToShow: 1,
-                        slidesToScroll: 1
+                        slidesToScroll: 1,
+                        initialSlide: 1
                     }
                 }
             ]
@@ -104,7 +123,6 @@ export default function Series({ info, RecoSerie }) {
 
                 <div className={styles.mainPostContainer}>
                     <Header />
-
                     <div className={styles.posterheadflex}>
                         <div className={styles.posterheadflex1}>
                             <img className={styles.imgposter} src={`https://image.tmdb.org/t/p/original${info.poster_path}`} />
@@ -117,22 +135,22 @@ export default function Series({ info, RecoSerie }) {
                                     {info.name}
 
                                 </h1>
-                                <div className={styles.filmdata}>
+                                <div className={`${styles.filmdata}`}>
                                     <span>2022</span>
                                     <span ><FaRegClock className={styles.duration} />  2h, 5min</span>
                                     <span><span className={styles.starspan}> <FaStar className={styles.starImg} /> </span> 7.2/ <span className={styles.deiz}>10</span> </span>
-                                    <span>Genero: {info.genres.map((e) => { return (<span className={styles.generos}>{e.name}</span>) })}</span>
+                                    <span className={styles.genresseries}>Genero: {info.genres.map((e) => { return (<span className={styles.generos}>{e.name}</span>) })}</span>
                                     <span className={styles.spantrailer}>Trailer <FaAngleRight /> </span>
                                 </div>
                                 <div className={styles.description}>
                                     <p>{info.overview}</p>
                                 </div>
-                                <div className={styles.buttonsPost}>
-                                    <button className={`${styles.btn1} ${styles.seguirdiv}`}> <FaBook className={styles.svgimgbw} /> SEGUIR</button>
+                                <div className={`${styles.buttonsPost}  ${styles.filmdataseries}`}>
+                                    <button className={`${styles.btn1} ${styles.seguirdiv} ${styles.seriesbtn1}`}> <FaBook className={styles.svgimgbw} /> SEGUIR</button>
                                     <button className={styles.btn1}> <FaRegHandPeace className={styles.svgimgbw}  /> CURTIR</button>
                                     <button className={styles.btn2}> <FaClock className={styles.svgimgbw}  /> VER DEPOIS</button>
-                                    <button className={styles.btn3}> <FaFacebookF className={styles.svgimgbw}  /> </button>
-                                    <button className={styles.btn4}>  <FaTwitter className={styles.svgimgbw}  /> </button>
+                                    <button className={`${styles.btn3} ${styles.btnseries}`}> <FaFacebookF className={styles.svgimgbw}  /> </button>
+                                    <button className={`$${styles.btnseries} ${styles.btn4}`}>  <FaTwitter className={styles.svgimgbw}  /> </button>
 
                                 </div>
                                 {/* <div className={styles.mainbutton}> <button className={styles.buttonLarge}>Ver página da série!</button> </div> */}
@@ -194,8 +212,12 @@ export default function Series({ info, RecoSerie }) {
                                         </textarea>
                                     </div>
                                     <div className={styles.commentflex2}>
-                                        <button className={styles.commntbutton} style={{ marginBottom: '10px' }}> <FaCommentAlt className={styles.commentsvg} /> <span className={styles.buttontext}>COMENTAR</span> </button>
-                                        <button className={styles.spoilerbtn}> <FaCircle style={{ marginTop: '-2px' }} className={styles.commentsvg} /> <span className={styles.buttontext}> É SPOILER?</span></button>
+                                    <div className={styles.divcommombtn} style={{ marginBottom: '10px' }}>
+                                            <FaCommentAlt className={styles.commentsvg} /> <span className={styles.buttontext}>COMENTAR</span>
+                                        </div>
+                                        <div className={styles.divspoilerbtn}>
+                                            <FaCircle className={styles.commentsvg} /> <span className={styles.buttontext}> É SPOILER?</span>
+                                        </div>
 
                                     </div>
 

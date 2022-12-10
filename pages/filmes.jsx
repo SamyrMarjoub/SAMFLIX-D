@@ -21,27 +21,47 @@ export default function filmes({ listaFilms, topRated }) {
             initialSlide: 0,
             responsive: [
                 {
-                    breakpoint: 1300,
+                    breakpoint: 1600,
                     settings: {
-                        slidesToShow: 3,
+                        slidesToShow: 6,
                         slidesToScroll: 3,
                         infinite: true,
                         dots: true
                     }
                 },
                 {
-                    breakpoint: 950,
+                    breakpoint: 1300,
                     settings: {
-                        slidesToShow: 2,
+                        slidesToShow: 5,
                         slidesToScroll: 2,
                         initialSlide: 2
                     }
                 },
                 {
-                    breakpoint: 550,
+                    breakpoint: 1050,
                     settings: {
-                        slidesToShow: 1,
+                        slidesToShow: 4,
                         slidesToScroll: 1
+                    }
+                },
+                {
+                    breakpoint:750,
+                    settings:{
+                        slidesToShow:3,
+                        slidesToScroll:1
+                    }
+                },
+                {breakpoint:550,
+                    settings:{
+                        slidesToShow:2,
+                        slidesToScroll:1
+                    }
+                },
+                {
+                    breakpoint:400,
+                    settings:{
+                        slidesToShow:1,
+                        slidesToScroll:1
                     }
                 }
             ]
@@ -140,7 +160,7 @@ export default function filmes({ listaFilms, topRated }) {
             document.getElementById('3').classList.remove('paginationselected')
             document.getElementById('4').classList.remove('paginationselected')
             document.getElementById('1').classList.remove('paginationselected')
-        } 
+        }
 
         if (categoria === '0') {
             if (e.currentTarget.id !== 'next') {
@@ -215,60 +235,65 @@ export default function filmes({ listaFilms, topRated }) {
                     </Slider>
                     <div className={styles.filmandseriedivfiltersearch}>
                         <div className={styles.containerseatchdiv}>
-                            <div className={styles.searchdivsf}>
-                                <span className={styles.spanpesquisesearch}>PESQUISE</span>
-                                <form id='searchinput' onSubmit={searchedmovie}>
-                                    <input value={query} onChange={(e) => { setQuery(e.target.value) }} placeholder='Pesquise por titulo' className={styles.searchinput} type={'search'} />
+                            <div className={styles.group1}>
+                                <div className={styles.searchdivsf}>
+                                    <span className={styles.spanpesquisesearch}>PESQUISE</span>
+                                    <form id='searchinput' onSubmit={searchedmovie}>
+                                        <input value={query} onChange={(e) => { setQuery(e.target.value) }} placeholder='Pesquise por titulo' className={styles.searchinput} type={'search'} />
 
-                                </form>
-                                <FaSearch className={styles.svgiconsearch} />
+                                    </form>
+                                    <FaSearch className={styles.svgiconsearch} />
+                                </div>
                             </div>
 
-                            <div className={`${styles.fs2} ${styles.defaultfs}`}>
+                            <div className={styles.group2}>
+                                <div className={`${styles.fs2} ${styles.defaultfs}`}>
 
-                                <div className={styles.header50top}>
-                                    <div className={styles.containerfilmargin}>
-                                        <span className={styles.spanpesquisesearch}>CATEGORIA</span>
-                                        <form id='formselect'>
-                                            <select name="" id="select" onChange={(e) => { setCategoria(e.target.value) }}>
-                                                <option  className='option' value="0">Todas</option>
-                                                <option  className='option' value="35">Comedia</option>
-                                                <option  className='option' value="28">Ação</option>
-                                                <option  className='option' value="18">Drama</option>
-                                                <option  className='option' value="10749">Romance</option>
-                                                <option  className='option' value="878">Ficção cientifica</option>
+                                    <div className={styles.header50top}>
+                                        <div className={styles.containerfilmargin}>
+                                            <span className={styles.spanpesquisesearch}>CATEGORIA</span>
+                                            <form id='formselect'>
+                                                <select name="" id="select" onChange={(e) => { setCategoria(e.target.value) }}>
+                                                    <option className='option' value="0">Todas</option>
+                                                    <option className='option' value="35">Comedia</option>
+                                                    <option className='option' value="28">Ação</option>
+                                                    <option className='option' value="18">Drama</option>
+                                                    <option className='option' value="10749">Romance</option>
+                                                    <option className='option' value="878">Ficção cientifica</option>
+
+                                                </select>
+                                            </form>
+
+
+
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div className={`${styles.fs3} ${styles.defaultfs}`}>
+                                    <div className={styles.header50top}>
+                                        <div className={styles.containerfilmargin}>
+                                            <span className={styles.spanpesquisesearch}>ORDENAR POR</span>
+                                            <select name="" id="select" onChange={(e) => { setOrdenar(e.target.value) }}>
+                                                <option className='option' value="release_date.desc">Ano</option>
+                                                <option className='option' value="title.des">Titulo</option>
+                                                <option className='option' value="vote_count.desc">Rate</option>
 
                                             </select>
-                                        </form>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className={`${styles.fs4} ${styles.defaultfs}`}>
+                                    <div className={styles.header50top}>
+                                        <div className={`${styles.containerfilmargin} ${styles.containerfilmargin2}`}>
 
+                                            <BiFilterAlt className={styles.filtersvg} />
+                                            <span className={styles.spanpesquisesearch}>DESCENDENTE</span>
 
-
+                                        </div>
                                     </div>
                                 </div>
 
-                            </div>
-                            <div className={`${styles.fs3} ${styles.defaultfs}`}>
-                                <div className={styles.header50top}>
-                                    <div className={styles.containerfilmargin}>
-                                        <span className={styles.spanpesquisesearch}>ORDENAR POR</span>
-                                        <select name="" id="select" onChange={(e) => { setOrdenar(e.target.value) }}>
-                                            <option  className='option' value="release_date.desc">Ano</option>
-                                            <option  className='option' value="title.des">Titulo</option>
-                                            <option  className='option' value="vote_count.desc">Rate</option>
-
-                                        </select>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className={`${styles.fs4} ${styles.defaultfs}`}>
-                                <div className={styles.header50top}>
-                                    <div className={`${styles.containerfilmargin} ${styles.containerfilmargin2}`}>
-
-                                        <BiFilterAlt className={styles.filtersvg} />
-                                        <span className={styles.spanpesquisesearch}>DESCENDENTE</span>
-
-                                    </div>
-                                </div>
                             </div>
 
 
@@ -302,12 +327,12 @@ export default function filmes({ listaFilms, topRated }) {
 
                     </div>
                     <div className={styles.paginationdiv}>
-                        <div  id='1' onClick={paginacoes} className={`${styles.paginationcontentdiv} paginationselected`}>1</div>
-                        <div  id='2' onClick={paginacoes} className={styles.paginationcontentdiv}>2</div>
-                        <div  id='3' onClick={paginacoes} className={styles.paginationcontentdiv}>3</div>
-                        <div  id='4' onClick={paginacoes} className={styles.paginationcontentdiv}>4</div>
-                        <div  id='5' onClick={paginacoes} className={styles.paginationcontentdiv}>5</div>
-                        <div  id='6' onClick={paginacoes} style={{ padding: '30px' }} className={styles.paginationcontentdiv}>Próxima</div>
+                        <div id='1' onClick={paginacoes} className={`${styles.paginationcontentdiv} paginationselected onep`}>1</div>
+                        <div id='2' onClick={paginacoes} className={`${styles.paginationcontentdiv} twop`}>2</div>
+                        <div id='3' onClick={paginacoes} className={`${styles.paginationcontentdiv} threep`}>3</div>
+                        <div id='4' onClick={paginacoes} className={`${styles.paginationcontentdiv} fourp`}>4</div>
+                        <div id='5' onClick={paginacoes} className={`${styles.paginationcontentdiv} fivep`}>5</div>
+                        <div id='6' onClick={paginacoes} style={{ padding: '30px' }} className={`${styles.paginationcontentdiv} sixp`}>Próxima</div>
 
                     </div>
                     <Footer className={styles.footerfs} />

@@ -348,8 +348,12 @@ export default function filmes({ SeriesNow, topRated, pagina }) {
 }
 
 export async function getServerSideProps() {
-    const SeriesNow = await axios.get(`https://api.themoviedb.org/3/tv/on_the_air?api_key=86ff22163d48cfd8567997262922738a&language=pt-br&page=1`)
-    const toprated = await axios.get(`https://api.themoviedb.org/3/discover/tv?api_key=86ff22163d48cfd8567997262922738a&language=pt-br&sort_by=popularity.desc&page=1&include_null_first_air_dates=false&with_watch_monetization_types=flatrate&with_status=0&with_type=0`)
+    const SeriesNow = await axios.get(`https://api.themoviedb.org/3/tv/on_the_air?api_key=86ff22163d48cfd8567997262922738a&language=pt-br&page=1`, { 
+        headers: { "Accept-Encoding": "gzip,deflate,compress" } 
+    })
+    const toprated = await axios.get(`https://api.themoviedb.org/3/discover/tv?api_key=86ff22163d48cfd8567997262922738a&language=pt-br&sort_by=popularity.desc&page=1&include_null_first_air_dates=false&with_watch_monetization_types=flatrate&with_status=0&with_type=0`, { 
+        headers: { "Accept-Encoding": "gzip,deflate,compress" } 
+    })
 
     return {
         props: {

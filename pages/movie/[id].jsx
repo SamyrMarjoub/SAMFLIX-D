@@ -339,10 +339,16 @@ export default function MovieItem({ info, RecommendMovie, videoFilm }) {
 
 export async function getServerSideProps(context) {
     const id = context.params.id
-    const resposta = await axios.get(`https://api.themoviedb.org/3/movie/${id}?api_key=86ff22163d48cfd8567997262922738a&language=pt-BR`)
+    const resposta = await axios.get(`https://api.themoviedb.org/3/movie/${id}?api_key=86ff22163d48cfd8567997262922738a&language=pt-BR`, { 
+        headers: { "Accept-Encoding": "gzip,deflate,compress" } 
+    })
     const idFilm = resposta.data
-    const RecoMovie = await axios.get(`https://api.themoviedb.org/3/movie/${idFilm.id}/similar?api_key=86ff22163d48cfd8567997262922738a&language=pt-br&page=1`)
-    const video = await axios.get(`https://api.themoviedb.org/3/movie/${id}/videos?api_key=86ff22163d48cfd8567997262922738a&language=en-US`)
+    const RecoMovie = await axios.get(`https://api.themoviedb.org/3/movie/${idFilm.id}/similar?api_key=86ff22163d48cfd8567997262922738a&language=pt-br&page=1`, { 
+        headers: { "Accept-Encoding": "gzip,deflate,compress" } 
+    })
+    const video = await axios.get(`https://api.themoviedb.org/3/movie/${id}/videos?api_key=86ff22163d48cfd8567997262922738a&language=en-US`, { 
+        headers: { "Accept-Encoding": "gzip,deflate,compress" } 
+    })
 
     return {
         props: {

@@ -344,8 +344,12 @@ export default function filmes({ listaFilms, topRated }) {
 }
 
 export async function getServerSideProps() {
-    const filmesNow = await axios.get(`https://api.themoviedb.org/3/movie/now_playing?api_key=86ff22163d48cfd8567997262922738a&language=pt-br&page=1`)
-    const toprated = await axios.get(`https://api.themoviedb.org/3/movie/popular?api_key=86ff22163d48cfd8567997262922738a&language=en-US&page=1`)
+    const filmesNow = await axios.get(`https://api.themoviedb.org/3/movie/now_playing?api_key=86ff22163d48cfd8567997262922738a&language=pt-br&page=1`, { 
+        headers: { "Accept-Encoding": "gzip,deflate,compress" } 
+    })
+    const toprated = await axios.get(`https://api.themoviedb.org/3/movie/popular?api_key=86ff22163d48cfd8567997262922738a&language=en-US&page=1`, { 
+        headers: { "Accept-Encoding": "gzip,deflate,compress" } 
+    })
     return {
         props: {
             listaFilms: filmesNow.data.results,

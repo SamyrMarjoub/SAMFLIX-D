@@ -502,14 +502,30 @@ export default function Home({ lista, series, popularFilm, nowFilm, filmTopRated
 }
 
 export async function getServerSideProps() {
-  const filmes = await axios.get(`https://api.themoviedb.org/3/trending/movie/week?api_key=86ff22163d48cfd8567997262922738a&language=pt-BR`)
-  const series = await axios.get('https://api.themoviedb.org/3/tv/on_the_air?api_key=86ff22163d48cfd8567997262922738a&language=pt-br&page=1')
-  const novasSeries = await axios.get('https://api.themoviedb.org/3/tv/airing_today?api_key=86ff22163d48cfd8567997262922738a&language=pt-br&page=1')
-  const seriespopular = await axios.get('https://api.themoviedb.org/3/tv/popular?api_key=86ff22163d48cfd8567997262922738a&language=en-US&page=1')
-  const topratedseries = await axios.get('https://api.themoviedb.org/3/tv/top_rated?api_key=86ff22163d48cfd8567997262922738a&language=pt-br&page=1')
-  const filmesNow = await axios.get('https://api.themoviedb.org/3/movie/now_playing?api_key=86ff22163d48cfd8567997262922738a&language=pt-br&page=1')
-  const filmesPopular = await axios.get('https://api.themoviedb.org/3/movie/popular?api_key=86ff22163d48cfd8567997262922738a&language=pt-br&page=1')
-  const filmTopRated = await axios.get('https://api.themoviedb.org/3/movie/top_rated?api_key=86ff22163d48cfd8567997262922738a&language=pt-br&page=1')
+  const filmes = await axios.get(`https://api.themoviedb.org/3/trending/movie/week?api_key=86ff22163d48cfd8567997262922738a&language=pt-BR`, {
+    headers: { "Accept-Encoding": "gzip,deflate,compress" }
+  })
+  const series = await axios.get('https://api.themoviedb.org/3/tv/on_the_air?api_key=86ff22163d48cfd8567997262922738a&language=pt-br&page=1', { 
+    headers: { "Accept-Encoding": "gzip,deflate,compress" } 
+})
+  const novasSeries = await axios.get('https://api.themoviedb.org/3/tv/airing_today?api_key=86ff22163d48cfd8567997262922738a&language=pt-br&page=1', { 
+    headers: { "Accept-Encoding": "gzip,deflate,compress" } 
+})
+  const seriespopular = await axios.get('https://api.themoviedb.org/3/tv/popular?api_key=86ff22163d48cfd8567997262922738a&language=en-US&page=1', { 
+    headers: { "Accept-Encoding": "gzip,deflate,compress" } 
+})
+  const topratedseries = await axios.get('https://api.themoviedb.org/3/tv/top_rated?api_key=86ff22163d48cfd8567997262922738a&language=pt-br&page=1', { 
+    headers: { "Accept-Encoding": "gzip,deflate,compress" } 
+})
+  const filmesNow = await axios.get('https://api.themoviedb.org/3/movie/now_playing?api_key=86ff22163d48cfd8567997262922738a&language=pt-br&page=1', { 
+    headers: { "Accept-Encoding": "gzip,deflate,compress" } 
+})
+  const filmesPopular = await axios.get('https://api.themoviedb.org/3/movie/popular?api_key=86ff22163d48cfd8567997262922738a&language=pt-br&page=1', { 
+    headers: { "Accept-Encoding": "gzip,deflate,compress" } 
+})
+  const filmTopRated = await axios.get('https://api.themoviedb.org/3/movie/top_rated?api_key=86ff22163d48cfd8567997262922738a&language=pt-br&page=1', { 
+    headers: { "Accept-Encoding": "gzip,deflate,compress" } 
+})
 
 
   return {

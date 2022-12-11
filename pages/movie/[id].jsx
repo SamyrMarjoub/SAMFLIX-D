@@ -315,7 +315,7 @@ export default function MovieItem({ info, RecommendMovie, videoFilm }) {
                                 <h6 className={styles.h6sub}>{info.original_title} Online - Assistir {info.title} Online grátis Dublado Legendado</h6>
                                 <p className={styles.subparagraph}>
                                     Filmes Online - Assistir Filmes Online - Filmes Online Grátis - Filmes Completos Dublados - Ligação Explosiva Online
-                                    Quer assistir filmes online em alta qualidade no vizer? É muito simples! Clique no botão de play, escolha um player de filme, e assista online gratuitamente! Pode também baixar todos os episódios por mystream, fembed e torrent! Tem melhor que isso? Acho que não! No Vizer você encontra mm filmes gratis em alta qualidade, sempre com lançamento novo! Não é necessário cadastro para assistir, mas se você é um fanatico por filmes, o vizer tem o melhor painel de usuário de sempre! Crie listas de filmes e séries, receba notificações, conheça a comunidade e muito mais!
+                                    Quer assistir filmes online em alta qualidade no Samflix? É muito simples! Clique no botão de play, escolha um player de filme, e assista online gratuitamente! Pode também baixar todos os episódios por mystream, fembed e torrent! Tem melhor que isso? Acho que não! No Samflix você encontra mm filmes gratis em alta qualidade, sempre com lançamento novo! Não é necessário cadastro para assistir, mas se você é um fanatico por filmes, o Samflix tem o melhor painel de usuário de sempre! Crie listas de filmes e séries, receba notificações, conheça a comunidade e muito mais!
 
 
                                 </p>

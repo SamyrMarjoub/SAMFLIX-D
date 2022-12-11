@@ -4,6 +4,7 @@ import Header from '../components/headerStatic'
 import { FaSearch, FaStar } from 'react-icons/fa'
 import Footer from '../components/FooterFilmSerie'
 import Link from 'next/link'
+import axios from 'axios'
 import Head from 'next/head'
 
 export default function search() {
@@ -19,9 +20,8 @@ export default function search() {
     async function submitar(e) {
         e.preventDefault()
         if (search !== '') {
-            const result = await fetch(`http://localhost:3000/api/search?query=${search}`)
-            const json = await result.json()
-            setMovieSearched(json.list)
+            const result = await axios.get(`https://api.themoviedb.org/3/search/movie?api_key=86ff22163d48cfd8567997262922738a&language=pt-BR&query=${search}`)
+            setMovieSearched(result.data.results)
             setSerached(true)
             setSearch('')
         }

@@ -502,7 +502,7 @@ export default function Home({ lista, series, popularFilm, nowFilm, filmTopRated
 }
 
 export async function getServerSideProps() {
-  const filmes = await fetch('http://localhost:3000/api/trending')
+  const filmes = await axios.get(`https://api.themoviedb.org/3/trending/movie/week?api_key=86ff22163d48cfd8567997262922738a&language=pt-BR`)
   const series = await axios.get('https://api.themoviedb.org/3/tv/on_the_air?api_key=86ff22163d48cfd8567997262922738a&language=pt-br&page=1')
   const novasSeries = await axios.get('https://api.themoviedb.org/3/tv/airing_today?api_key=86ff22163d48cfd8567997262922738a&language=pt-br&page=1')
   const seriespopular = await axios.get('https://api.themoviedb.org/3/tv/popular?api_key=86ff22163d48cfd8567997262922738a&language=en-US&page=1')
@@ -510,12 +510,11 @@ export async function getServerSideProps() {
   const filmesNow = await axios.get('https://api.themoviedb.org/3/movie/now_playing?api_key=86ff22163d48cfd8567997262922738a&language=pt-br&page=1')
   const filmesPopular = await axios.get('https://api.themoviedb.org/3/movie/popular?api_key=86ff22163d48cfd8567997262922738a&language=pt-br&page=1')
   const filmTopRated = await axios.get('https://api.themoviedb.org/3/movie/top_rated?api_key=86ff22163d48cfd8567997262922738a&language=pt-br&page=1')
-  const json = await filmes.json()
 
 
   return {
     props: {
-      lista: json.list,
+      lista: filmes.data.results,
       series: series.data.results,
       popularFilm: filmesPopular.data.results,
       nowFilm: filmesNow.data.results,

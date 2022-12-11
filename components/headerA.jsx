@@ -3,7 +3,7 @@ import styles from '../styles/Header.module.css'
 import { FaSearch, FaUser } from 'react-icons/fa'
 import Link from 'next/link'
 import { useEffect } from 'react'
-import Sobre from '../pages/sobre'
+// import Sobre from '../pages/sobre'
 
 export default function header() {
 
@@ -38,7 +38,6 @@ export default function header() {
                 series[i].classList.remove('firstli')
             }
             search.classList.remove('firstli')
-            series.classList.remove('firstli')
         } else if (pagina === '2') {
             for (let i = 0; i < inicio.length; i++) {
                 inicio[i].classList.remove('firstli')
@@ -47,7 +46,6 @@ export default function header() {
                 about[i].classList.remove('firstli')
             }
             search.classList.remove('firstli')
-            inicio.classList.remove('firstli')
         } else if (pagina === '3') {
             for (let i = 0; i < inicio.length; i++) {
                 series[i].classList.remove('firstli')

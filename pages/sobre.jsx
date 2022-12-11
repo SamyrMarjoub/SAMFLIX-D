@@ -5,7 +5,8 @@ import Header from '../components/header'
 import Link from 'next/link'
 import { useEffect } from 'react'
 import Footer from '../components/footersobre'
-export default function Sobre({ autor }) {
+
+export default function Sobre() {
 
 
     useEffect(() => {
@@ -69,12 +70,12 @@ export default function Sobre({ autor }) {
     )
 }
 
-export async function getStaticProps() {
-    const resposta = await fetch('http://localhost:3000/api/trending')
-    const json = await resposta.json()
-    return {
-        props: {
-            autor: 'Samyr'
-        }
-    }
-}
+// export async function getStaticProps() {
+//     const resposta = await fetch('http://localhost:3000/api/trending')
+//     const json = await resposta.json()
+//     return {
+//         props: {
+//             autor: 'Samyr'
+//         }
+//     }
+// }

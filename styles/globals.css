@@ -395,9 +395,7 @@ a {
   }
 }
 @media screen and (max-width:500px) {
-  .menu-btn{
-    display: none;
-  }
+ 
   .maincontainer{
     background-color: black !important;
     background-image: none !important;
@@ -428,9 +426,7 @@ a {
   textarea, input{
     outline: none;
 }
-  /* body{
-    overflow-x: hidden;
-  } */
+ 
 }
 
 @media (prefers-color-scheme: dark) {

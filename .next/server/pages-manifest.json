@@ -1,17 +1,6 @@
 {
   "/_app": "pages/_app.js",
-  "/api/movie/[id]": "pages/api/movie/[id].js",
-  "/api/search": "pages/api/search.js",
-  "/api/series": "pages/api/series.js",
-  "/api/trending": "pages/api/trending.js",
-  "/search": "pages/search.html",
   "/_error": "pages/_error.js",
-  "/filmes": "pages/filmes.js",
-  "/movie/[id]": "pages/movie/[id].js",
-  "/": "pages/index.js",
-  "/series": "pages/series.js",
-  "/series/[id]": "pages/series/[id].js",
-  "/sobre": "pages/sobre.html",
   "/_document": "pages/_document.js",
-  "/404": "pages/404.html"
+  "/": "pages/index.js"
 }
